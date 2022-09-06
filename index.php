@@ -4,23 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Courier management system</title>
+    <title>Document</title>
+    <!-- Bootstrap Link -->
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 </head>
 <body>
-    <h1>Hello</h1>
-    <p>lorem125134134131</p>
-    <p>lorem125134134131</p>
-    <h2>Yoo</h2>
-    <p>lorem125134134131</p>
-    <h2>Ok</h2>
-    <h2>Yoo</h2>
-
-    <h2>Text</h2>
-    <h2>Text</h2>
-    <h2>Text</h2>
-    <p>ok</p>
-    <h2>Text</h2>
-    <h2>Text</h2>
-    <h2>Text</h2>
+    
 </body>
 </html>
