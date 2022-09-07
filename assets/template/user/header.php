@@ -15,3 +15,24 @@
 
 </head>
 <body>
+
+<nav>
+    <div class="logo-container">
+        <img src="./assets/img/userimg/web-logo.png" alt="Logo" class="logo">
+    </div>
+    <ul class="nav-list-container">
+        <li class="nav-list"><a href="#" class="nav-item nav-active">Home</a></li>
+        <li class="nav-list"><a href="#" class="nav-item">About</a></li>
+        <li class="nav-list"><a href="#" class="nav-item">Contact Us</a></li>
+        <li class="nav-list"><a href="#" class="nav-item">Projects</a></li>
+    </ul>
+</nav>
+<div class="gap">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+</div>
