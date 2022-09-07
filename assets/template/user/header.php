@@ -17,24 +17,51 @@
 
     <!-- OnScroll JQuery Function -->
     <script src="./assets/JS/userJS/onscroll.js"></script>
+
+    <!-- Header Css Link -->
+    <link rel="stylesheet" href="./assets/CSS/userCss/header.css">
+
+    <!-- Custom On-Scroll Styling -->
+    <link rel="stylesheet" href="./assets/CSS/userCSS/scrolled.css">
+
 </head>
 <body>
 
-<nav>
-    <div class="logo-container">
-        <img src="./assets/img/userimg/web-logo.png" alt="Logo" class="logo">
+<!-- Top Bar Starts Here -->
+<div class="bar">
+
+    <div class="top-bar" >
+        <!-- Top Navbar -->
+    <div>
+        <div class="info-container">
+            <i class="fa-sharp fa-solid fa-phone info"></i>
+            <i class="fa-brands fa-whatsapp info"></i>
+        </div>
+        <ul class="info-list-container">
+            <li class="info-list"><a target="_blank" href="https://www.facebook.com" class="info-item"><i class="fa-brands fa-facebook"></i></a></li>
+            <li class="info-list"><a target="_blank" href="https://www.instagram.com" class="info-item"><i class="fa-brands fa-instagram"></i></a></li>
+            <li class="info-list"><a target="_blank" href="https://www.twitter.com" class="info-item"><i class="fa-brands fa-twitter"></i></a></li>
+        </ul>
     </div>
-    <ul class="nav-list-container">
-        <li class="nav-list"><a href="#" class="nav-item nav-active">Home</a></li>
-        <li class="nav-list"><a href="#" class="nav-item">About</a></li>
-        <li class="nav-list"><a href="#" class="nav-item">Contact Us</a></li>
-        <li class="nav-list"><a href="#" class="nav-item">Projects</a></li>
-    </ul>
+</div>
+</div>
+<!-- Top Bar Ends Here -->
+
+<nav >
+    <!-- Main Navbar -->
+    <div>
+        <div class="logo-container">
+            <img src="./assets/img/userimg/web-logo.png" alt="Logo" class="logo">
+        </div>
+        <ul class="nav-list-container">
+            <li class="nav-list"><a href="#" class="nav-item nav-active">Home</a></li>
+            <li class="nav-list"><a href="#" class="nav-item">About</a></li>
+            <li class="nav-list"><a href="#" class="nav-item">Contact Us</a></li>
+            <li class="nav-list"><a href="#" class="nav-item">Projects</a></li>
+        </ul>
+    </div>
 </nav>
 <div class="gap">
-    <br>
-    <br>
-    <br>
     <br>
     <br>
     <br>

@@ -1,0 +1,21 @@
+/* Scrolled Navbar Styling */
+
+.scrolled {
+  background-color: rgba(0, 0, 0, 0.7);
+  height: 12vh;
+  padding: 10px 50px;
+  z-index: 20;
+}
+
+/* Scrolled Logo Styling */
+.scrolled .logo {
+  height: 7vh;
+  margin-left: 7vw;
+}
+
+/* Scrolled Links Styling */
+.scrolled .nav-item {
+  font-weight: 500;
+  font-size: medium;
+  padding: 5px 20px;
+}

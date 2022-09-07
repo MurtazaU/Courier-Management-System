@@ -1,8 +1,36 @@
-/* Header Styling */
+/* Top Bar Styling */
+.bar {
+  border-bottom: 1px solid rgba(100, 100, 100, 0.5);
+}
+.top-bar {
+  width: 100%;
+  padding: 5px 100px;
+  color: white;
+}
 
+.info {
+  padding: 0px 10px;
+}
+
+.info-list-container {
+  float: right !important;
+  margin-top: -25px;
+  display: flex !important;
+}
+
+.info-list {
+  list-style: none;
+}
+
+.info-item {
+  text-decoration: none;
+  padding: 0px 10px;
+}
+
+/* Header Styling */
 nav {
-  position: fixed;
-  top: 0;
+  position: fixed !important;
+  top: 10;
   left: 0;
   width: 100%;
   height: 100px;
@@ -13,20 +41,20 @@ nav {
 
 /* Logo */
 .logo-container {
-  float: left;
+  float: left !important;
 }
 
 .logo {
-  height: 80px;
+  height: 10vh;
   transition: 0.5s;
 }
 
 /* Nav-Links */
 .nav-list-container {
-  float: right;
+  float: right !important;
   margin: 0;
   padding: 0;
-  display: flex;
+  display: flex !important;
 }
 
 .nav-list {
@@ -35,7 +63,7 @@ nav {
 
 .nav-item {
   line-height: 80px;
-  padding: 5px 20px;
+  padding: 10px 20px;
   text-decoration: none;
   text-transform: uppercase;
   transition: 0.5s;
@@ -54,13 +82,4 @@ nav {
   background-color: #f46711;
   color: white !important;
   padding: 10px 15px;
-}
-
-/* OnScroll Styling */
-
-.scrolled {
-  background: white;
-  height: 80px;
-  padding: 10px 50px;
-  z-index: 213;
 }
