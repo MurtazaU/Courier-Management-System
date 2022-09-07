@@ -55,3 +55,12 @@ nav {
   color: white !important;
   padding: 10px 15px;
 }
+
+/* OnScroll Styling */
+
+.scrolled {
+  background: white;
+  height: 80px;
+  padding: 10px 50px;
+  z-index: 213;
+}
