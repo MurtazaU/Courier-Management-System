@@ -4,10 +4,12 @@ include('./assets/template/user/header.php')
 <!-- Links to External Resources Starts Here -->
 
 <!-- Home Css Link -->
-<link rel="stylesheet" href="./assets/CSS/userCss/home.css">
+<link rel="stylesheet" href="./assets/CSS/userCss/hero.css">
+
 
 <!-- Home Css Link -->
-<link rel="stylesheet" href="./assets/CSS/userCss/hero.css">
+<link rel="stylesheet" href="./assets/CSS/userCss/home.css">
+
 
 <!-- Links to External Resources Ends Here -->
 

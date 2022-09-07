@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="./assets/CSS/userCSS/scrolled.css">
 
 </head>
-<body>
+<body >
 
 <!-- Top Bar Starts Here -->
 <div class="bar">
@@ -51,7 +51,7 @@
     <!-- Main Navbar -->
     <div>
         <div class="logo-container">
-            <img src="./assets/img/userimg/web-logo.png" alt="Logo" class="logo">
+            <img src="./assets/img/web-logo.png" alt="Logo" class="logo">
         </div>
         <ul class="nav-list-container">
             <li class="nav-list"><a href="#" class="nav-item nav-active">Home</a></li>
