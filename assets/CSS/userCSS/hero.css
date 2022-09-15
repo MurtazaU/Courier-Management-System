@@ -77,15 +77,6 @@ main {
 
 /* Animation */
 
-/* .animation {
-  height: 50vh;
-  width: 25vw;
-  right: 23%;
-  position: absolute;
-  border: 0.5px solid rgba(100, 100, 100, 0.3);
-  border-radius: 100%;
-} */
-
 .animation {
   width: 25vw;
   height: 50vh;
@@ -152,6 +143,37 @@ main {
   /* Ending Point */
   100% {
     transform: rotate(540deg) translate(-200px) rotate(540deg);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 960px) {
+  .animation {
+    border: none;
+  }
+
+  /* Responsive Animation KeyFrames */
+
+  @-webkit-keyframes circle {
+    /* Starting Point */
+    0% {
+      transform: rotate(0deg) translate(-150px) rotate(0deg);
+    }
+    /* Ending Point */
+    100% {
+      transform: rotate(360deg) translate(-150px) rotate(360deg);
+    }
+  }
+
+  @-webkit-keyframes sec-circle {
+    /* Starting Point */
+    0% {
+      transform: rotate(180deg) translate(-150px) rotate(180deg);
+    }
+    /* Ending Point */
+    100% {
+      transform: rotate(540deg) translate(-150px) rotate(540deg);
+    }
   }
 }
 

@@ -18,14 +18,12 @@
     <!-- OnScroll JQuery Function -->
     <script src="./assets/JS/userJS/onscroll.js"></script>
 
+    <!-- Home Css Link -->
+    <link rel="stylesheet" href="./assets/CSS/userCSS/home.css">
+
     <!-- Header Css Link -->
     <link rel="stylesheet" href="./assets/CSS/userCss/header.css">
 
-    <!-- Custom On-Scroll Styling -->
-    <link rel="stylesheet" href="./assets/CSS/userCSS/scrolled.css">
-
-    <!-- Home Css Link -->
-    <link rel="stylesheet" href="./assets/CSS/userCSS/home.css">
 
 </head>
 <body >
@@ -49,24 +47,31 @@
 </div>
 </div>
 <!-- Top Bar Ends Here -->
-
-<nav >
-    <!-- Main Navbar -->
-    <div>
-        <div class="logo-container">
-            <img src="./assets/img/web-logo.png" alt="Logo" class="logo">
+<!-- Navbar Starts Here -->
+<nav class="navbar navbar-expand-lg">
+  <div class="container ">
+    <a class="navbar-brand " href="/">
+        <img src="./assets/img/web-logo.png" class="logo" alt="logo">
+    </a>
+    <button class="navbar-toggler  " type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon "></span>
+    </button>
+    <form class="d-flex ">
+        <div class="collapse navbar-collapse" id="navbarContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link text-light  active" href="/"><span class="nav-hover">Home </span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-light " href="#"> <span class="nav-hover">About Us </span> </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-light "  href="#" > <span class="nav-hover"> Our Services</span></a>
+            </li>
+          </ul>
         </div>
-        <ul class="nav-list-container">
-            <li class="nav-list"><a href="#" class="nav-item nav-active">Home</a></li>
-            <li class="nav-list"><a href="#" class="nav-item">About</a></li>
-            <li class="nav-list"><a href="#" class="nav-item">Contact Us</a></li>
-            <li class="nav-list"><a href="#" class="nav-item">Projects</a></li>
-        </ul>
-    </div>
+        </form>
+  </div>
 </nav>
-<div class="gap">
-    <br>
-    <br>
-    <br>
-    <br>
-</div>
+<!-- Navbar Ends Here -->
+<!-- Main Navbar Ends Here -->

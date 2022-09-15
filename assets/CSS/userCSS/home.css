@@ -1,7 +1,9 @@
 /* Page Styling */
 body,
 html {
+  height: 100%;
   background-color: #0b0b0b;
+  overflow-x: hidden;
 }
 
 p,
@@ -18,12 +20,9 @@ a {
 /* Info Box */
 .info-box {
   background-color: #f46711 !important;
-  width: 100%;
-  height: 110px;
   color: white;
   font-size: 50px;
-  text-align: center;
-  margin-top: 50px;
+  margin-top: 55px;
 }
 
 .info-box-heading {
@@ -40,3 +39,18 @@ a {
 .info-box-content {
   border-right: 1px solid rgb(211, 211, 211);
 }
+
+/* Qualities Section Start Here */
+.qualities {
+  /* The image used */
+  background-image: url("https://images.pexels.com/photos/6563903/pexels-photo-6563903.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+
+  /* Full height */
+  height: 80%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+/* Qualities Section End Here */

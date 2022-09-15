@@ -29,57 +29,92 @@
 
 /* Header Styling */
 nav {
-  position: fixed !important;
-  top: 10;
-  left: 0;
-  width: 100%;
-  height: 100px;
-  padding: 10px 100px;
-  box-sizing: border-box;
   transition: 0.5s;
-}
-
-/* Logo */
-.logo-container {
-  float: left !important;
+  width: 100%;
 }
 
 .logo {
   height: 10vh;
   transition: 0.5s;
-}
-
-/* Nav-Links */
-.nav-list-container {
-  float: right !important;
-  margin: 0;
-  padding: 0;
-  display: flex !important;
-}
-
-.nav-list {
-  list-style: none;
+  margin-left: 7vw;
 }
 
 .nav-item {
   line-height: 80px;
-  padding: 10px 20px;
-  text-decoration: none;
+  padding: 0px 20px;
   text-transform: uppercase;
   transition: 0.5s;
   font-weight: bolder;
 }
 
-/* Active Link */
-.nav-active {
+.nav-hover {
+  transition: 0.5s;
+}
+/* Hovered Link */
+.nav-item:hover .nav-hover {
   background-color: #f46711;
-  color: white !important;
   padding: 10px 15px;
 }
 
-/* Hovered Link */
-.nav-item:hover {
-  background-color: #f46711;
-  color: white !important;
-  padding: 10px 15px;
+/* Scrolled Navbar Styling */
+
+.scrolled {
+  background-color: rgba(0, 0, 0, 0.7);
+  height: 12vh;
+  padding: 10px 50px;
+  z-index: 20;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+/* Scrolled Logo Styling */
+.scrolled .logo {
+  height: 7vh;
+  margin-left: 7vw;
+}
+
+/* Scrolled Links Styling */
+.scrolled .nav-item {
+  font-weight: 500;
+  font-size: medium;
+  padding: 5px 20px;
+}
+
+@media (max-width: 960px) {
+  nav {
+    position: fixed;
+  }
+  .logo {
+    height: 5vh;
+    margin-left: 0px;
+  }
+
+  /* Navbar Toggler */
+  .navbar-toggler {
+    background-color: #f46711;
+    position: absolute;
+    left: 80vw;
+  }
+  #navbarContent {
+    background-color: #f46711;
+    transition: 0.5s;
+    width: 100vw;
+    text-align: center;
+  }
+  .scrolled {
+    background-color: transparent;
+    padding: 0px 0px;
+    height: 3vh;
+    z-index: 0;
+  }
+  .scrolled .logo {
+    height: 5vh;
+    margin-left: 0;
+  }
+  .scrolled .nav-item {
+    font-weight: 500;
+    font-size: medium;
+    padding: 0px 0px;
+  }
 }

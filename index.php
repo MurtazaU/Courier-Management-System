@@ -6,19 +6,14 @@ include('./assets/template/user/header.php')
 <!-- Home Css Link -->
 <link rel="stylesheet" href="./assets/CSS/userCss/hero.css">
 
-
-<!-- Home Css Link -->
-<link rel="stylesheet" href="./assets/CSS/userCss/home.css">
-
-
 <!-- Links to External Resources Ends Here -->
 
 <div class="container ">
 <!-- Hero Section Starts Here -->
-    <main>
+    <main >
       <section class="section-hero section">
             <div class="row">
-                <div class="col-6">
+                <div class="col-lg-6 col-md-6 col-sm-12">
                     <div class="section-hero-data">
                         <p class="hero-top-data">DELIVERING THE FUTURE</p>
                         <h3 class="hero-sub-heading"> <a class="hero-sub-heading-letter">B</a>uilding Stronger Connections with</h1>
@@ -35,10 +30,10 @@ include('./assets/template/user/header.php')
                 </div>
                     
                     <!-- hero section right side  -->
-                    <div class="col-6">
+                    <div class="col-lg-6 col-md-6 col-sm-12">
                     <div class="section-hero-image">
                         <!-- Hero Img -->
-                            <img src="./assets/img/userimg/hero-img.png" alt="Package Being Delivered">
+                            <img src="./assets/img/userimg/hero-img.png" class="hero-img" alt="Package Being Delivered">
                             <!-- Hero Img Ends -->
                             <!-- Hero Animation -->
                             <div class="animation">
@@ -54,14 +49,14 @@ include('./assets/template/user/header.php')
         </section>
     </main>
 </div>
-
     <!-- Hero Section Ends Here -->
+
     <!-- Special Services Container Starts here -->
     <div class="info-box">
         <div class="container">
     <div class="row">
         <!-- Icon With Text Starts Here-->
-        <div class="col-4 info-box-content">
+        <div class="col-lg-4 col-md-4 col-sm-12 info-box-content">
             <div class="row">
                 <div class="col-4 text-end">
             <i class="fa-solid fa-clock"></i>
@@ -72,9 +67,9 @@ include('./assets/template/user/header.php')
                 </div>
             </div>
         </div>
+        <!-- Icon With Text Ends Here-->
         <!-- Icon With Text Starts Here-->
-        <!-- Icon With Text Starts Here-->
-        <div class="col-4 info-box-content">
+        <div class="col-lg-4 col-md-4 col-sm-12  info-box-content">
             <div class="row">
                 <div class="col-4 text-end">
                     <i class="fa-solid fa-envelope"></i>
@@ -85,9 +80,9 @@ include('./assets/template/user/header.php')
                 </div>
             </div>
         </div>
+        <!-- Icon With Text Ends Here-->
         <!-- Icon With Text Starts Here-->
-        <!-- Icon With Text Starts Here-->
-        <div class="col-4">
+        <div class="col-lg-4 col-md-4 col-sm-12 ">
             <div class="row">
                 <div class="col-4 text-end">
                     <i class="fa-solid fa-phone"></i>
@@ -98,13 +93,23 @@ include('./assets/template/user/header.php')
                 </div>
             </div>
         </div>
-        <!-- Icon With Text Starts Here-->
+        <!-- Icon With Text Ends Here-->
 
         </div>
         </div>
 
     </div>
     <!-- Special Services Container Ends here -->
+
+    <!-- Qualities Section Starts Here -->
+    <div class="row">
+        <div class="qualities">
+            <h1>Helo</h1>
+            <h1>Helo</h1>
+            <h1>Helo</h1>
+        </div>
+    </div>
+    <!-- Qualities Section Ends Here -->
 
 <!-- Main Content Ends Here -->
 
