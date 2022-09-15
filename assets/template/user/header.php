@@ -24,6 +24,9 @@
     <!-- Custom On-Scroll Styling -->
     <link rel="stylesheet" href="./assets/CSS/userCSS/scrolled.css">
 
+    <!-- Home Css Link -->
+    <link rel="stylesheet" href="./assets/CSS/userCSS/home.css">
+
 </head>
 <body >
 

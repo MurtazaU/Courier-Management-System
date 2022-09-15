@@ -53,8 +53,58 @@ include('./assets/template/user/header.php')
          
         </section>
     </main>
-    <!-- Hero Section Ends Here -->
 </div>
+
+    <!-- Hero Section Ends Here -->
+    <!-- Special Services Container Starts here -->
+    <div class="info-box">
+        <div class="container">
+    <div class="row">
+        <!-- Icon With Text Starts Here-->
+        <div class="col-4 info-box-content">
+            <div class="row">
+                <div class="col-4 text-end">
+            <i class="fa-solid fa-clock"></i>
+                </div>
+                <div class="col-6 text-start">
+                    <p class="info-box-heading">Working Hours</p>
+                    <p class="info-box-sub-heading">Mon - Sat 09:00AM - 05:30PM</p>
+                </div>
+            </div>
+        </div>
+        <!-- Icon With Text Starts Here-->
+        <!-- Icon With Text Starts Here-->
+        <div class="col-4 info-box-content">
+            <div class="row">
+                <div class="col-4 text-end">
+                    <i class="fa-solid fa-envelope"></i>
+                </div>
+                <div class="col-6 text-start">
+                    <p class="info-box-heading">Email Now!</p>
+                    <p class="info-box-sub-heading">contact@mulphilog.com</p>
+                </div>
+            </div>
+        </div>
+        <!-- Icon With Text Starts Here-->
+        <!-- Icon With Text Starts Here-->
+        <div class="col-4">
+            <div class="row">
+                <div class="col-4 text-end">
+                    <i class="fa-solid fa-phone"></i>
+                </div>
+                <div class="col-6 text-start">
+                    <p class="info-box-heading">Get In Touch</p>
+                    <p class="info-box-sub-heading">(021) 111-202-202</p>
+                </div>
+            </div>
+        </div>
+        <!-- Icon With Text Starts Here-->
+
+        </div>
+        </div>
+
+    </div>
+    <!-- Special Services Container Ends here -->
 
 <!-- Main Content Ends Here -->
 
