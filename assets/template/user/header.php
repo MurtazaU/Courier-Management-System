@@ -70,6 +70,9 @@
             <li class="nav-item">
               <a class="nav-link text-light "  href="#" > <span class="nav-hover"> Our Services</span></a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link text-light "  href="./user/registration/registration.php" > <span class="nav-hover"> Sign In</span></a>
+            </li>
           </ul>
         </div>
         </form>
