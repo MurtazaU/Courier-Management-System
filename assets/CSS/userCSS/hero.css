@@ -2,6 +2,7 @@
 main {
   position: relative;
   top: 100%;
+  margin-top: 10vh;
 }
 
 /* Hero Heading */
@@ -147,7 +148,10 @@ main {
 }
 
 /* Responsive Design */
-@media (max-width: 960px) {
+@media (max-width: 1285px) {
+  main {
+    margin-top: 5vh;
+  }
   .animation {
     border: none;
   }

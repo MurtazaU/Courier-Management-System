@@ -10,7 +10,7 @@ include('./assets/template/user/header.php')
 
 <div class="container ">
 <!-- Hero Section Starts Here -->
-    <main >
+    <main>
       <section class="section-hero section">
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-12">
@@ -102,14 +102,55 @@ include('./assets/template/user/header.php')
     <!-- Special Services Container Ends here -->
 
     <!-- Qualities Section Starts Here -->
-    <div class="row">
-        <div class="qualities">
-            <h1>Helo</h1>
-            <h1>Helo</h1>
-            <h1>Helo</h1>
+    <section class="qualities">
+  <div class="qualities-row">
+    <div class="qualities-column">
+      <div class="qualities-card">
+        <div class="qualities-icon-wrapper">
+          <i class="fa-solid fa-hammer"></i>
         </div>
+        <h3 class="qualities-h3">Fast</h3>
+        <p class="qualities-p">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero hic
+          excepturi laborum molestiae, repudiandae velit tenetur error
+          voluptates numquam possimus ad. Iure similique deserunt doloremque
+          nostrum? Quam iure ex labore.
+        </p>
+      </div>
     </div>
+    <div class="qualities-column">
+      <div class="qualities-card">
+        <div class="qualities-icon-wrapper">
+          <i class="fa-solid fa-hammer"></i>
+        </div>
+        <h3 class="qualities-h3">Secure</h3>
+        <p class="qualities-p">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero hic
+          excepturi laborum molestiae, repudiandae velit tenetur error
+          voluptates numquam possimus ad. Iure similique deserunt doloremque
+          nostrum? Quam iure ex labore.
+        </p>
+      </div>
+    </div>
+    <div class="qualities-column">
+      <div class="qualities-card">
+        <div class="qualities-icon-wrapper">
+          <i class="fa-solid fa-hammer"></i>
+        </div>
+        <h3 class="qualities-h3">Reliable</h3>
+        <p class="qualities-p">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero hic
+          excepturi laborum molestiae, repudiandae velit tenetur error
+          voluptates numquam possimus ad. Iure similique deserunt doloremque
+          nostrum? Quam iure ex labore.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
     <!-- Qualities Section Ends Here -->
+
+    
 
 <!-- Main Content Ends Here -->
 

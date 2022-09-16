@@ -22,8 +22,10 @@
     <link rel="stylesheet" href="./assets/CSS/userCSS/home.css">
 
     <!-- Header Css Link -->
-    <link rel="stylesheet" href="./assets/CSS/userCss/header.css">
+    <link rel="stylesheet" href="./assets/CSS/userCSS/header.css">
 
+    <!-- Qualities CSS Link -->
+    <link rel="stylesheet" href="./assets/CSS/userCSS/qualites.css">
 
 </head>
 <body >
@@ -48,8 +50,8 @@
 </div>
 <!-- Top Bar Ends Here -->
 <!-- Navbar Starts Here -->
-<nav class="navbar navbar-expand-lg">
-  <div class="container ">
+<nav class="navbar navbar-expand-lg ">
+  <div class="container-fluid ">
     <a class="navbar-brand " href="/">
         <img src="./assets/img/web-logo.png" class="logo" alt="logo">
     </a>
