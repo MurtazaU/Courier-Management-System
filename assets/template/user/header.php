@@ -1,3 +1,7 @@
+<?php 
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -71,7 +75,18 @@
               <a class="nav-link text-light "  href="#" > <span class="nav-hover"> Our Services</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-light "  href="./user/registration/registration.php" > <span class="nav-hover"> Sign In</span></a>
+              <?php 
+              if(isset($_SESSION['useremail'])){
+                ?>
+                <a class="nav-link text-light "  href="./user/registration/authentication.php" > <span class="nav-hover"> Dashboard </span></a>
+                <?php
+              } else{
+
+              ?>
+              <a class="nav-link text-light "  href="./user/registration/authentication.php" > <span class="nav-hover"> Sign In/Sign Up</span></a>
+              <?php 
+              }
+              ?>
             </li>
           </ul>
         </div>

@@ -1,3 +1,5 @@
+/* Page Styling */
+
 * {
   margin: 0;
   padding: 0;
@@ -8,6 +10,8 @@ body,
 input {
   font-family: "Poppins", sans-serif;
 }
+
+/* Registration CSS */
 
 .register-container {
   position: relative;
@@ -58,6 +62,17 @@ form.sign-in-form {
   z-index: 2;
 }
 
+/* Register Country Select */
+.register-country {
+  border: none;
+  background-color: #f0f0f0;
+  border-radius: 20%;
+}
+
+.register-country::after {
+  border: none;
+}
+
 .title {
   font-size: 2.2rem;
   color: #444;
@@ -83,6 +98,10 @@ form.sign-in-form {
   color: #acacac;
   transition: 0.5s;
   font-size: 1.1rem;
+}
+
+#eye {
+  color: black;
 }
 
 .input-field input {
@@ -126,13 +145,13 @@ form.sign-in-form {
 }
 
 .social-icon:hover {
-  color: #4481eb;
-  border-color: #4481eb;
+  color: #f46711;
+  border-color: #f46711;
 }
 
 .register-btn {
   width: 150px;
-  background-color: #5995fd;
+  background-color: #f46711;
   border: none;
   outline: none;
   height: 49px;
@@ -146,7 +165,7 @@ form.sign-in-form {
 }
 
 .register-btn:hover {
-  background-color: #4d84e2;
+  background-color: #0b0b0b;
 }
 .panels-container {
   position: absolute;
@@ -166,7 +185,7 @@ form.sign-in-form {
   top: -10%;
   right: 48%;
   transform: translateY(-50%);
-  background-image: linear-gradient(-45deg, #4481eb 0%, #04befe 100%);
+  background-image: linear-gradient(-45deg, #f46711 0%, #f46711 100%);
   transition: 1.8s ease-in-out;
   border-radius: 50%;
   z-index: 6;
@@ -267,6 +286,8 @@ form.sign-in-form {
 .register-container.sign-up-mode .right-panel {
   pointer-events: all;
 }
+
+/* Media Queries */
 
 @media (max-width: 870px) {
   .register-container {
