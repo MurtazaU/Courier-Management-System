@@ -90,6 +90,7 @@ nav {
   padding: 5px 20px;
 }
 
+/* Responsive Styling */
 @media (max-width: 960px) {
   nav {
     position: fixed;

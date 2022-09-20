@@ -76,6 +76,26 @@ main {
   max-width: 80%;
 }
 
+/* Hero Button */
+.btn-color{
+  background: #f46711;
+}
+
+.btn-color:hover{
+  border: 1px solid #f46711;
+
+}
+
+.btn-color:hover  a{
+  color: #f46711;
+  background-color: black;
+}
+.btn-color > a{
+  text-decoration: none;
+
+
+}
+
 /* Animation */
 
 .animation {

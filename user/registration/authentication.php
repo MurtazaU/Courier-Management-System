@@ -7,7 +7,7 @@ include('../../assets/modules/dbconnection.php');
 
 if(isset($_REQUEST['register-form-btn'])){
   // Get All Values From Registration Form
-  $useremail = $_REQUEST['log-password'];
+  $registername = $_REQUEST['register-name'];
   $registeremail = $_REQUEST['register-email'];
   $registerpassword = $_REQUEST['register-password'];
   $registernumber = $_REQUEST['register-number'];
@@ -15,7 +15,7 @@ if(isset($_REQUEST['register-form-btn'])){
   $registerzipcode = $_REQUEST['register-zip-code'];
   $registercity = $_REQUEST['register-city'];
   $registerstate = $_REQUEST['register-state'];
-  $registercountry = $_REQUEST['register-country'];
+  // $registercountry = $_REQUEST['register-country'];
 
   // Check to see if there are any other accounts using the same email
   // $query = $con -> prepare('select * from customer where customeremail = "murtazausmani985@gmail.com"');
@@ -23,16 +23,15 @@ if(isset($_REQUEST['register-form-btn'])){
   // $query_count = $query->rowCount();
 
   // If there is no account using the same email then proceed or else spit out an error
-            $sql = $con->prepare('insert into customer(customername,customeremail,customerpassword, customerzipcode, customercountryid, customerstate, customercity, customeraddress, customernumber) values (?,?,?,?,?,?,?,?,?)');
+            $sql = $con->prepare('insert into customer(customername,customeremail,customerpassword, customerzipcode, customerstate, customercity, customeraddress, customernumber) values (?,?,?,?,?,?,?,?)');
             $sql->bindParam(1,$registername);
             $sql->bindParam(2,$registeremail);
             $sql->bindParam(3,$registerpassword);
             $sql->bindParam(4,$registerzipcode);
-            $sql->bindParam(5,$registercountry);
-            $sql->bindParam(6,$registerstate);
-            $sql->bindParam(7,$registercity);
-            $sql->bindParam(8,$registeraddress);
-            $sql->bindParam(9,$registernumber);
+            $sql->bindParam(5,$registerstate);
+            $sql->bindParam(6,$registercity);
+            $sql->bindParam(7,$registeraddress);
+            $sql->bindParam(8,$registernumber);
 
             // Execute the script
             $sql->execute();

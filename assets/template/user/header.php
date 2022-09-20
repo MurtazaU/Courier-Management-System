@@ -69,29 +69,39 @@ session_start();
               <a class="nav-link text-light  active" href="/"><span class="nav-hover">Home </span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-light " href="#"> <span class="nav-hover">About Us </span> </a>
+              <a class="nav-link text-light " href="./user/about.php"> <span class="nav-hover">About Us </span> </a>
             </li>
             <li class="nav-item">
               <a class="nav-link text-light "  href="#" > <span class="nav-hover"> Our Services</span></a>
             </li>
-            <li class="nav-item">
-              <?php 
+            <?php 
               if(isset($_SESSION['useremail'])){
                 ?>
-                <a class="nav-link text-light "  href="./user/registration/authentication.php" > <span class="nav-hover"> Dashboard </span></a>
+                <li class="nav-item">
+                <a class="nav-link text-light "  href="./track-order.php" > <span class="nav-hover"> Track Package </span></a>
+                </li>
+
+                <li class="nav-item">
+                <a class="nav-link text-light "  href="./assets/modules/logout.php" > <span class="nav-hover"> Log Out </span></a>
+                </li>
+
                 <?php
               } else{
 
               ?>
+              <li class="nav-item">
               <a class="nav-link text-light "  href="./user/registration/authentication.php" > <span class="nav-hover"> Sign In/Sign Up</span></a>
+              </li>
+
               <?php 
               }
               ?>
-            </li>
           </ul>
         </div>
         </form>
   </div>
 </nav>
+<br>
+<br>
 <!-- Navbar Ends Here -->
 <!-- Main Navbar Ends Here -->

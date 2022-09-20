@@ -23,8 +23,19 @@ include('./assets/template/user/header.php')
                         </p>
                         <!-- Button -->
                         <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Enter Tracking Number" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                        <span class="input-group-text hero-input-right" id="basic-addon2"><i class="fa-solid fa-truck-fast"></i></span>
+                          <?php 
+                          if(isset($_SESSION['useremail'])){
+                            ?>
+                            <input type="text" class="form-control" placeholder="Enter Tracking Number"                           aria-label="Recipient's username" aria-describedby="basic-addon2">
+                            <span class="input-group-text hero-input-right" id="basic-addon2"><i class="fa-solid fa-truck-fast"></i></span>
+                            <?php
+                          } else{
+                            ?>
+                            <button class="btn btn-color"><a href="./user/registration/authentication.php">Log In To Track Your Package</a></button>
+                            <?php
+                          }
+                          ?>
+                       
                         </div>
                     </div>
                 </div>
