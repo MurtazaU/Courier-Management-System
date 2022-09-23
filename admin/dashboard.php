@@ -1,48 +1,115 @@
 <?php 
-include('../assets/template/admin/sidebar.php');
+include('../assets/template/admin/header.php');
 ?>
-    <link rel="stylesheet" href="../assets/CSS/adminCSS/admindashboard.css">
 
-<!-- Main Section Starts Here -->
-    <main >
-        <h1>Dashboard</h1>
-
-        <!-- Top Section Starts Here-->
-
-        <!-- Date -->
-        <div class="date">
-            <input type="date">
-        </div>
-
-        <!-- Insights -->
-        <div class="insights">
-            <div class="sales" >
-                <span class="material-icons-sharp">analytics</span>
-                <div class="middle">
-                    <div class="left">
-                        <h3>Total Sales</h3>
-                        <h1>$25,500</h1>
-                    </div>
-                    <div class="progress">
-                        <svg>
-                            <circle cx='38' cy='38' r='36'></circle>
-                        </svg>
-                        <div class="number">
-                            <p>81%</p>
-                        </div>
-                    </div>
+<!-- Main Body Starts Here -->
+    <div class="container-fluid py-4">
+      <div class="row">
+        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+          <!-- Card Starts Here -->
+          <div class="card">
+            <div class="card-body p-3">
+              <div class="row">
+                <div class="col-8">
+                  <div class="numbers">
+                    <!-- Card Heading -->
+                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Total Orders</p>
+                    <!-- Card Number -->
+                    <h5 class="font-weight-bolder mb-0 color-orange">
+                      <span class="color-orange">
+                      +53,525
+                      </span>
+                    </h5>
+                  </div>
                 </div>
-                <small class="text-muted">Last 24 Hours</small>
+                <!-- Card Icon -->
+                <div class="col-4 text-end">
+                  <i class="fa fa-money color-orange"></i>
+                </div>
+              </div>
             </div>
-            <!-- End Of Salse -->
+          </div>
+          <!-- Card Ends Here -->
         </div>
-        <!-- Top Sections Ends Here -->
+        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+          <div class="card">
+            <!-- Card Starts Here -->
+            <div class="card-body p-3">
+              <div class="row">
+                <div class="col-8">
+                  <div class="numbers">
+                    <!-- Card Heading -->
+                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Total Customers</p>
+                    <!-- Card Number -->
+                    <h5 class="font-weight-bolder mb-0">
+                      <span class="color-orange">
+                        2,353
+                      </span>
+                    </h5>
+                  </div>
+                </div>
+                <!-- Card Icon -->
+                <div class="col-4 text-end">
+                  <i class="fa fa-users color-orange"></i>
+                </div>
+              </div>
+            </div>
+            <!-- Card Ends Here -->
+          </div>
+        </div>
+        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+          <div class="card">
+            <!-- Card Starts Here -->
+            <div class="card-body p-3">
+              <div class="row">
+                <div class="col-8">
+                  <div class="numbers">
+                    <!-- Card Heading -->
+                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Total Agents</p>
+                    <!-- Card Number -->
+                    <h5 class="font-weight-bolder mb-0">
+                      <span class="color-orange">
+                        +3,462
+                      </span>
+                    </h5>
+                  </div>
+                </div>
+                <!-- Card Icon -->
+                <div class="col-4 text-end">
+                  <i class="fa fa-user color-orange"></i>
+                </div>
+              </div>
+            </div>
+            <!-- Card Ends Here -->
+          </div>
+        </div>
+        <div class="col-xl-3 col-sm-6">
+          <div class="card">
+            <!-- Card Starts Here -->
+            <div class="card-body p-3">
+              <div class="row">
+                <div class="col-8">
+                  <div class="numbers">
+                    <!-- Card Heading -->
+                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Total Packages</p>
+                    <!-- Card Number -->
+                    <h5 class="font-weight-bolder mb-0">
+                      <span class="color-orange">$103,430</span>
+                    </h5>
+                  </div>
+                </div>
+                <div class="col-4 text-end">
+                  <i class="fa fa-box color-orange"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-    </main>
-<!-- Main Section Ends Here -->
 
-</div>
-
-<?php 
-include('../assets/template/admin/footer.php');
-?>
+  <!-- Admin Footer -->
+  <?php
+  include('../assets/template/admin/footer.php');
+  ?>
