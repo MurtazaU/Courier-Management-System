@@ -1,96 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>
-    Admin  
-  </title>
-  <!-- Links Starts Here -->
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="../assets/CSS/adminCSS/main-admin.css" />
 
-  <!-- Main Admin CSS Links -->
-  <link id="pagestyle" href="../assets/css/adminCSS/main-admin.css" rel="stylesheet" />
-  <link href="../assets/css/adminCSS/custom-admin.css" rel="stylesheet" />
+    <!-- Icons -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
+      rel="stylesheet"
+    />
 
-  <!-- Font Awesome Icons -->
-  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-  <link href="../assets/css/adminCSS/nucleo-svg.css" rel="stylesheet" />
-  <!-- CSS Files -->
+    <!--<title>Dashboard Sidebar Menu</title>-->
+  </head>
+  <body>
+    <nav class="sidebar open">
+      <header>
+        <div class="image-text">
+          <span class="image">
+            <!--<img src="logo.png" alt="">-->
+          </span>
 
-  <!-- Links Ends Here -->
-</head>
-
-<!-- Body Starts Here -->
-<body class="g-sidenav-show  bg-gray-100">
-  <!-- Sidebar Starts here -->
-  <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 " id="sidenav-main">
-    <div class="sidenav-header">
-      <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
-      <a class="navbar-brand m-0" href="#">
-        <img src="../assets/img/web-logo.png" class="navbar-brand-img h-100" alt="main_logo">
-      </a>
-    </div>
-    <hr class="horizontal dark mt-0">
-    <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
-      <!-- Nav-links Container Starts Here -->
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" href="#" >
-              <!-- Icon -->
-                <i class="fa fa-home"></i>
-            <!-- Icon Text -->
-            <span class="nav-link-text ms-1">Dashboard</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="./pages/tables.html">
-              <!-- Icon -->
-              <i class="fa fa-table"></i>
-              <!-- Icon Text -->
-            <span class="nav-link-text ms-1">Tables</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link  " href="./pages/billing.html">
-            <!-- Icon -->
-            <i class="fa fa-money-bill"></i>
-            <span class="nav-link-text ms-1">Billing</span>
-          </a>
-        </li>
-      </ul>
-      <!-- Nav-Links Ends Here -->
-    </div>
-    <!-- Sidebar Footer Starts Here -->
-    <div class="sidenav-footer mx-3 ">
-      <a class="btn bg-gradient-primary mt-3 w-100" href="../assets/modules/logout.php">Log Out</a>
-    </div>
-    <!-- Sidebar Footer Ends Here -->
-  </aside>
-  <!-- Sidebar Ends Here -->
-
-<!-- Main Body Starts Here -->
-  <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-    <!-- Navbar -->
-    <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
-      <div class="container-fluid py-1 px-3">
-        <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
-          <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-            <div class="input-group">
-              <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
-              <input type="text" class="form-control" placeholder="Type here...">
-            </div>
+          <div class="text logo-text">
+            <img src="../assets/img/web-logo.png" width="100rem" alt="Logo">
           </div>
-          <!-- Navbar Links Start Here -->
-          <ul class="navbar-nav  justify-content-end">
-            <li class="nav-item d-flex align-items-center">
-              <a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
-                <i class="fa fa-user me-sm-1"></i>
-                <span class="d-sm-inline d-none">Sign In</span>
+        </div>
+
+        <i class="bx bx-chevron-right toggle"></i>
+      </header>
+
+      <div class="menu-bar">
+        <div class="menu">
+          <li class="search-box">
+            <i class="bx bx-search icon"></i>
+            <input type="text" placeholder="Search..." />
+          </li>
+
+          <ul class="menu-links">
+            <li class="nav-link">
+              <a href="#">
+                <i class="bx bx-home-alt icon"></i>
+                <span class="text nav-text">Dashboard</span>
+              </a>
+            </li>
+
+            <li class="nav-link">
+              <a href="#">
+                <i class="bx bx-bar-chart-alt-2 icon"></i>
+                <span class="text nav-text">Revenue</span>
+              </a>
+            </li>
+
+            <li class="nav-link">
+              <a href="#">
+                <i class="bx bx-bell icon"></i>
+                <span class="text nav-text">Notifications</span>
+              </a>
+            </li>
+
+            <li class="nav-link">
+              <a href="#">
+                <i class="bx bx-pie-chart-alt icon"></i>
+                <span class="text nav-text">Analytics</span>
+              </a>
+            </li>
+
+            <li class="nav-link">
+              <a href="#">
+                <i class="bx bx-heart icon"></i>
+                <span class="text nav-text">Likes</span>
+              </a>
+            </li>
+
+            <li class="nav-link">
+              <a href="#">
+                <i class="bx bx-wallet icon"></i>
+                <span class="text nav-text">Wallets</span>
               </a>
             </li>
           </ul>
         </div>
+
+        <div class="bottom-content">
+          <li class="">
+            <a href="#">
+              <i class="bx bx-log-out icon"></i>
+              <span class="text nav-text">Logout</span>
+            </a>
+          </li>
+
+          <li class="mode">
+            <div class="sun-moon">
+              <i class="bx bx-moon icon moon"></i>
+              <i class="bx bx-sun icon sun"></i>
+            </div>
+            <span class="mode-text text">Dark mode</span>
+
+            <div class="toggle-switch">
+              <span class="switch"></span>
+            </div>
+          </li>
+        </div>
       </div>
     </nav>
-    <!-- End Navbar -->
+
+    <section class="home">
+      <div class="text">Dashboard Sidebar</div>
+    </section>
+
+    <script>
+      const body = document.querySelector("body"),
+        sidebar = body.querySelector("nav"),
+        toggle = body.querySelector(".toggle"),
+        searchBtn = body.querySelector(".search-box"),
+        modeSwitch = body.querySelector(".toggle-switch"),
+        modeText = body.querySelector(".mode-text");
+
+      toggle.addEventListener("click", () => {
+        sidebar.classList.toggle("close");
+      });
+
+      searchBtn.addEventListener("click", () => {
+        sidebar.classList.remove("close");
+      });
+
+      modeSwitch.addEventListener("click", () => {
+        body.classList.toggle("dark");
+
+        if (body.classList.contains("dark")) {
+          modeText.innerText = "Light mode";
+        } else {
+          modeText.innerText = "Dark mode";
+        }
+      });
+    </script>
+  </body>
+</html>
