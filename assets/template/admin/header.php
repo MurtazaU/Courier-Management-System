@@ -1,3 +1,10 @@
+<?php 
+session_start();
+if(!isset($_SESSION['admin-email'])){
+  header("location: ./login.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -14,7 +21,7 @@
       rel="stylesheet"
     />
 
-    <!--<title>Dashboard Sidebar Menu</title>-->
+    <title>Admin</title>
   </head>
   <body>
     <nav class="sidebar open">
@@ -108,7 +115,9 @@
     </nav>
 
     <section class="home">
-      <div class="text">Dashboard Sidebar</div>
+      <div class="text">Welcome Back, <?php if(isset($_SESSION['admin-email'])){
+        echo $_SESSION['admin-email'];
+      } ?></div>
     </section>
 
     <script>
