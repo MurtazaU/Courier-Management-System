@@ -73,6 +73,7 @@ if(isset($_REQUEST['adminSubmit'])){
               <div class="d-grid">
                 <input type="submit" name="adminSubmit" value="Log in" class="btn btn-primary btn-login text-uppercase fw-bold"/>
               </div>
+                          <p class="text-center mt-3">Log In As A User? <a href="../user/registration/authentication.php">Click Here</a></p>
             </form>
             <!-- Form Starts Here -->
           </div>

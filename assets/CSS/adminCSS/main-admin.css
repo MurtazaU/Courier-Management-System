@@ -40,7 +40,7 @@ body.dark {
   --primary-color: #f46711;
   --primary-color-light: #3a3b3c;
   --toggle-color: #fff;
-  --text-color: #ccc;
+  --text-color: #fff;
 }
 
 /* ===== Sidebar ===== */
@@ -171,6 +171,10 @@ body.dark .sidebar header .toggle {
   background-color: var(--primary-color-light);
   cursor: pointer;
   transition: var(--tran-05);
+}
+
+.nav-link {
+  margin-left: -30px !important;
 }
 
 .sidebar li.search-box input {

@@ -116,6 +116,7 @@ if(isset($_REQUEST['log-submit'])){
               session_destroy();
             }
             ?>
+            <p>Log In As An Admin? <a href="../../admin/login.php">Click Here</a></p>
 
           </form>
           <!-- Sign In Form Ends Here -->

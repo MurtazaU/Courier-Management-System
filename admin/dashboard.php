@@ -1,6 +1,5 @@
 <?php 
 include('../assets/template/admin/header.php');
-
 include('../assets/modules/dbconnection.php');
 
 // All Customers Table
@@ -11,170 +10,127 @@ $customerRecord = $allCustomers -> fetchAll(PDO::FETCH_OBJ);
 ?>
 
 <!-- Main Body Starts Here -->
-    <div class="container-fluid py-4">
-      <div class="row">
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+<div class="container">
+
+<!-- Analytics Start Here -->
+    <div class="row mt-3">
+      <div class="main-heading">
+        <h2 class="text-center mb-3">Today's Analytics</h2>
+      </div>
           <!-- Card Starts Here -->
-          <div class="card">
-            <div class="card-body p-3">
-              <div class="row">
-                <div class="col-8">
-                  <div class="numbers">
-                    <!-- Card Heading -->
-                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Total Orders</p>
-                    <!-- Card Number -->
-                    <h5 class="font-weight-bolder mb-0 color-orange">
-                      <span class="color-orange">
-                      +53,525
-                      </span>
-                    </h5>
-                  </div>
+        <div class="col-xl-3 col-lg-6">
+            <div class="card l-bg-cherry">
+                <div class="card-statistic-3 p-4">
+                    <div class="card-icon card-icon-large">
+                      <!-- Icon -->
+                      <i class="fas fa-box"></i>
+                    </div>
+                    <div class="mb-4">
+                      <!-- Main Heading -->
+                        <h6 class="card-title mb-0">New Packages</h6>
+                    </div>
+                    <div class="row align-items-center mb-2 d-flex">
+                        <div class="col-8">
+                            <h2 class="d-flex align-items-center mb-0">
+                              <!-- Body Text -->
+                                3,243
+                            </h2>
+                        </div>
+                    </div>
+                    <!-- Progress Line -->
+                    <div class="progress mt-1 " data-height="8" style="height: 8px;">
+                        <div class="progress-bar l-bg-cyan" role="progressbar" data-width="25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
+                    </div>
                 </div>
-                <!-- Card Icon -->
-                <div class="col-4 text-end">
-                  <i class="fa fa-money color-orange"></i>
-                </div>
-              </div>
             </div>
-          </div>
-          <!-- Card Ends Here -->
         </div>
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-          <div class="card">
-            <!-- Card Starts Here -->
-            <div class="card-body p-3">
-              <div class="row">
-                <div class="col-8">
-                  <div class="numbers">
-                    <!-- Card Heading -->
-                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Total Customers</p>
-                    <!-- Card Number -->
-                    <h5 class="font-weight-bolder mb-0">
-                      <span class="color-orange">
-                        2,353
-                      </span>
-                    </h5>
-                  </div>
-                </div>
-                <!-- Card Icon -->
-                <div class="col-4 text-end">
-                  <i class="fa fa-users color-orange"></i>
-                </div>
-              </div>
-            </div>
             <!-- Card Ends Here -->
-          </div>
-        </div>
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-          <div class="card">
             <!-- Card Starts Here -->
-            <div class="card-body p-3">
-              <div class="row">
-                <div class="col-8">
-                  <div class="numbers">
-                    <!-- Card Heading -->
-                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Total Agents</p>
-                    <!-- Card Number -->
-                    <h5 class="font-weight-bolder mb-0">
-                      <span class="color-orange">
-                        +3,462
-                      </span>
-                    </h5>
-                  </div>
+        <div class="col-xl-3 col-lg-6">
+            <div class="card l-bg-orange-dark">
+                <div class="card-statistic-3 p-4">
+                    <div class="card-icon card-icon-large">
+                      <!-- Icon -->
+                      <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <div class="mb-4">
+                        <h6 class="card-title mb-0">Newly Delivered Packages</h6>
+                    </div>
+                    <div class="row align-items-center mb-2 d-flex">
+                        <div class="col-8">
+                            <h2 class="d-flex align-items-center mb-0">
+                                $11.61k
+                            </h2>
+                        </div>
+                        <div class="col-4 text-right">
+                            <span>2.5% <i class="fa fa-arrow-up"></i></span>
+                        </div>
+                    </div>
+                    <div class="progress mt-1 " data-height="8" style="height: 8px;">
+                        <div class="progress-bar l-bg-cyan" role="progressbar" data-width="25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 25%;"></div>
+                    </div>
                 </div>
-                <!-- Card Icon -->
-                <div class="col-4 text-end">
-                  <i class="fa fa-user color-orange"></i>
-                </div>
-              </div>
             </div>
-            <!-- Card Ends Here -->
-          </div>
-        </div>
-        <div class="col-xl-3 col-sm-6">
-          <div class="card">
-            <!-- Card Starts Here -->
-            <div class="card-body p-3">
-              <div class="row">
-                <div class="col-8">
-                  <div class="numbers">
-                    <!-- Card Heading -->
-                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Total Packages</p>
-                    <!-- Card Number -->
-                    <h5 class="font-weight-bolder mb-0">
-                      <span class="color-orange">$103,430</span>
-                    </h5>
-                  </div>
-                </div>
-                <div class="col-4 text-end">
-                  <i class="fa fa-box color-orange"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
         <!-- Card Ends Here -->
-
-
-        <!-- Main Tables Start Here -->
-        <div class="row mt-5">
-
-         <!-- Col Starts Here -->
-         <div class="col-xl-6 col-sm-12">
-         <div class="card">
             <!-- Card Starts Here -->
-            <div class="card-body">
-              <div class="row">
-                <div class="col-8">
-                  <div class="numbers">
-                    <!-- Card Heading -->
-                    <p class="text-sm text-capitalize font-weight-bold "> <h5 class="color-orange text-center">Customers</h5></p>
-                    <!-- Card Table -->
-                    <table class="table ">
-                      <!-- Table Head -->
-                      <tr>
-                        <th>ID#</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Contact No.</th>
-                        <th>Country</th>
-                      </tr>
-                    <!-- Table Body -->
-                    <tbody>
-                      <!-- Looping Over Data -->
-                      <?php 
-                      foreach($customerRecord as $row){
-                        ?>
-                      <tr class="table-row">
-                        <td> <?php echo $row->CustomerId ?> </td>
-                        <td> <?php echo $row->CustomerName ?> </td>
-                        <td> <?php echo $row->CustomerEmail ?> </td>
-                        <td> <?php echo $row->CustomerNumber ?> </td>
-                        <td> <?php echo $row->CustomerCountryId ?> </td>
-                      </tr>
-                        <?php
-                      }
-                      ?>
-                    </tbody>
-                  </table>
-                  </div>
+        <div class="col-xl-3 col-lg-6">
+            <div class="card l-bg-blue-dark">
+                <div class="card-statistic-3 p-4">
+                    <div class="card-icon card-icon-large">
+                      <!-- Icon -->
+                      <i class="fas fa-users"></i>
+                    </div>
+                    <div class="mb-4">
+                      <!-- Main Heading -->
+                        <h6 class="card-title mb-0">New Users</h6>
+                    </div>
+                    <div class="row align-items-center mb-2 d-flex">
+                        <div class="col-8">
+                            <h2 class="d-flex align-items-center mb-0">
+                              <!-- Body Text -->
+                                15.07k
+                            </h2>
+                        </div>
+                    </div>
+                    <!-- Progress Underline -->
+                    <div class="progress mt-1 " data-height="8" style="height: 8px;">
+                        <div class="progress-bar l-bg-green" role="progressbar" data-width="25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
+                    </div>
                 </div>
-
-                  
-                </div>
-              </div>
             </div>
-          </div>
-         <!-- Col Ends Here -->
-          <div class="col-6"> 
-            <div class="text-center">
-              Ok
-            </div>
-          </div>
         </div>
-        <!-- Main Tables End Here -->
-      </div>
+        <!-- Card Ends Here -->
+        <!-- Card Starts Here -->
+        <div class="col-xl-3 col-lg-6">
+            <div class="card l-bg-green-dark">
+                <div class="card-statistic-3 p-4">
+                    <div class="card-icon card-icon-large"><i class="fas fa-ticket-alt"></i></div>
+                    <div class="mb-4">
+                        <h6 class="card-title mb-0">New Agents</h6>
+                    </div>
+                    <div class="row align-items-center mb-2 d-flex">
+                        <div class="col-8">
+                            <h2 class="d-flex align-items-center mb-0">
+                                578
+                            </h2>
+                        </div>
+                        <div class="col-4 text-right">
+                            <span>10% <i class="fa fa-arrow-up"></i></span>
+                        </div>
+                    </div>
+                    <div class="progress mt-1 " data-height="8" style="height: 8px;">
+                        <div class="progress-bar l-bg-orange" role="progressbar" data-width="25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 25%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Card Ends Here -->
+       
+    </div>
+  <!-- Analytics End Here -->
+</div>
+
 
 
   <!-- Admin Footer -->
