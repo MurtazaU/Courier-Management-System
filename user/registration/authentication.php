@@ -23,7 +23,7 @@ if(isset($_REQUEST['register-form-btn'])){
   // $query_count = $query->rowCount();
 
   // If there is no account using the same email then proceed or else spit out an error
-            $sql = $con->prepare('insert into customer(customername,customeremail,customerpassword, customerzipcode, customercountryid customerstate, customercity, customeraddress, customernumber) values (?,?,?,?,?,?,?,?,?)');
+            $sql = $con->prepare('insert into customer(CustomerName,CustomerEmail,CustomerPassword, CustomerZipCode, CustomerCountryId, CustomerState, CustomerCity, CustomerAddress, CustomerNumber) values (?,?,?,?,?,?,?,?,?)');
             $sql->bindParam(1,$registername);
             $sql->bindParam(2,$registeremail);
             $sql->bindParam(3,$registerpassword);

@@ -11,11 +11,11 @@ $customerRecord = $allCustomers -> fetchAll(PDO::FETCH_OBJ);
 
 <!-- Main Body Starts Here -->
 <div class="container">
-
+        <h3 class="text">Welcome Back, <?php if(isset($_SESSION['admin-email'])){ echo $_SESSION['admin-email'];}  ?></h3>
 <!-- Analytics Start Here -->
     <div class="row mt-3">
       <div class="main-heading">
-        <h2 class="text-center mb-3">Today's Analytics</h2>
+        <h2 class="text-center mb-3 text">Today's Analytics</h2>
       </div>
           <!-- Card Starts Here -->
         <div class="col-xl-3 col-lg-6">
@@ -27,7 +27,7 @@ $customerRecord = $allCustomers -> fetchAll(PDO::FETCH_OBJ);
                     </div>
                     <div class="mb-4">
                       <!-- Main Heading -->
-                        <h6 class="card-title mb-0">New Packages</h6>
+                        <h6 class="card-title mb-0">New Couriers</h6>
                     </div>
                     <div class="row align-items-center mb-2 d-flex">
                         <div class="col-8">
@@ -54,20 +54,20 @@ $customerRecord = $allCustomers -> fetchAll(PDO::FETCH_OBJ);
                       <i class="fas fa-dollar-sign"></i>
                     </div>
                     <div class="mb-4">
-                        <h6 class="card-title mb-0">Newly Delivered Packages</h6>
+                        <!-- Main Heading -->
+                        <h6 class="card-title mb-0">Newly Delivered Couriers</h6>
                     </div>
                     <div class="row align-items-center mb-2 d-flex">
                         <div class="col-8">
                             <h2 class="d-flex align-items-center mb-0">
-                                $11.61k
+                                <!-- Body Text -->
+                                1,161
                             </h2>
                         </div>
-                        <div class="col-4 text-right">
-                            <span>2.5% <i class="fa fa-arrow-up"></i></span>
-                        </div>
                     </div>
+                    <!-- Progress Line -->
                     <div class="progress mt-1 " data-height="8" style="height: 8px;">
-                        <div class="progress-bar l-bg-cyan" role="progressbar" data-width="25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 25%;"></div>
+                        <div class="progress-bar l-bg-cyan" role="progressbar" data-width="25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
                     </div>
                 </div>
             </div>
@@ -89,7 +89,7 @@ $customerRecord = $allCustomers -> fetchAll(PDO::FETCH_OBJ);
                         <div class="col-8">
                             <h2 class="d-flex align-items-center mb-0">
                               <!-- Body Text -->
-                                15.07k
+                                1,507
                             </h2>
                         </div>
                     </div>
@@ -105,22 +105,25 @@ $customerRecord = $allCustomers -> fetchAll(PDO::FETCH_OBJ);
         <div class="col-xl-3 col-lg-6">
             <div class="card l-bg-green-dark">
                 <div class="card-statistic-3 p-4">
-                    <div class="card-icon card-icon-large"><i class="fas fa-ticket-alt"></i></div>
+                    <div class="card-icon card-icon-large">
+                        <!-- Icon -->
+                        <i class="fas fa-building-shield"></i>
+                    </div>
                     <div class="mb-4">
+                        <!-- Main Heading -->
                         <h6 class="card-title mb-0">New Agents</h6>
                     </div>
                     <div class="row align-items-center mb-2 d-flex">
                         <div class="col-8">
                             <h2 class="d-flex align-items-center mb-0">
+                                <!-- Body Text -->
                                 578
                             </h2>
                         </div>
-                        <div class="col-4 text-right">
-                            <span>10% <i class="fa fa-arrow-up"></i></span>
-                        </div>
                     </div>
+                    <!-- Progress Underline -->
                     <div class="progress mt-1 " data-height="8" style="height: 8px;">
-                        <div class="progress-bar l-bg-orange" role="progressbar" data-width="25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 25%;"></div>
+                        <div class="progress-bar l-bg-orange" role="progressbar" data-width="25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
                     </div>
                 </div>
             </div>

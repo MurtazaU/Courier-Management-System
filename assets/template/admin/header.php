@@ -26,6 +26,11 @@ if(!isset($_SESSION['admin-email'])){
     <!-- FontAwesome Kit -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <!-- Jquery JS Link -->
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+
+    <!-- Table CSS -->
+    <link rel="stylesheet" href="../assets/CSS/adminCSS/table.css">
 
     
     <title>Admin</title> 
@@ -56,23 +61,23 @@ if(!isset($_SESSION['admin-email'])){
 
                 <ul class="menu-links">
                     <li class="nav-link">
-                        <a href="#">
-                            <i class='bx bx-home-alt icon' ></i>
+                        <a href="./dashboard.php">
+                            <i class="fa-solid fa-house icon"></i>
                             <span class="text nav-text">Dashboard</span>
                         </a>
                     </li>
 
                     <li class="nav-link">
-                        <a href="#">
-                            <i class='bx bx-bar-chart-alt-2 icon' ></i>
-                            <span class="text nav-text">Revenue</span>
+                        <a href="./courier.php">
+                            <i class="fa-solid fa-boxes-stacked icon"></i>
+                            <span class="text nav-text">View Courier Details</span>
                         </a>
                     </li>
 
                     <li class="nav-link">
-                        <a href="#">
-                            <i class='bx bx-bell icon'></i>
-                            <span class="text nav-text">Notifications</span>
+                        <a href="./new-courier.php">
+                            <i class="fa-solid fa-box icon"></i>
+                            <span class="text nav-text">Create New Courier</span>
                         </a>
                     </li>
 
@@ -102,7 +107,7 @@ if(!isset($_SESSION['admin-email'])){
 
             <div class="bottom-content">
                 <li class="">
-                    <a href="#">
+                    <a href="../assets/modules/logout.php">
                         <i class='bx bx-log-out icon' ></i>
                         <span class="text nav-text">Logout</span>
                     </a>
@@ -125,5 +130,5 @@ if(!isset($_SESSION['admin-email'])){
 
     </nav>
 
+    <!-- Main Body Starts Here -->
     <section class="home">
-        <div class="text">Dashboard Sidebar</div>
