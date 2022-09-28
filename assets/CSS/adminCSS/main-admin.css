@@ -23,6 +23,10 @@
   --tran-05: all 0.3s ease;
 }
 
+.nav-text {
+  font-size: 14px !important;
+}
+
 .btn-submit {
   background-color: var(--primary-color) !important;
   border: none !important;

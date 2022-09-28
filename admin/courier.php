@@ -47,7 +47,7 @@ $deliveryServiceRecord = $deliveryService -> fetchAll(PDO::FETCH_OBJ);
 
 <!-- Main Content Starts Here -->
 <div class="container">
-        <h3 class="text">Couriers</h3>
+        <h3 class="text mt-3">Couriers</h3>
 <!-- Analytics Start Here -->
     <div class="row mt-3">
       <div class="main-heading">
@@ -119,7 +119,7 @@ $deliveryServiceRecord = $deliveryService -> fetchAll(PDO::FETCH_OBJ);
   <div class="row">
     <div class="col-12">
         <!-- Couriers -->
-        <table class="table table-striped text">
+        <table class="table text">
             <!-- Table Head -->
             <thead>
                 <tr>
@@ -193,7 +193,7 @@ $deliveryServiceRecord = $deliveryService -> fetchAll(PDO::FETCH_OBJ);
                 <td class="text">
                     <div class="row">
                         <div class="col-12">
-                            <a href="#"><button type="submit" class="btn"><i class="fa-solid fa-pen-to-square"></i></button></a>
+                            <a href="./update-courier.php?courier-id=<?php echo $row->PackageId; ?>"><button type="submit" class="btn"><i class="fa-solid fa-pen-to-square"></i></button></a>
                         </div>
                         <div class="col-12">
                             <a href="#"><button type="submit" class="btn"><i class="fa-solid fa-trash"></i></button></a>

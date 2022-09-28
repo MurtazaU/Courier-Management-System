@@ -70,7 +70,7 @@ if(!isset($_SESSION['admin-email'])){
                     <li class="nav-link">
                         <a href="./courier.php">
                             <i class="fa-solid fa-boxes-stacked icon"></i>
-                            <span class="text nav-text">View Courier Details</span>
+                            <span class="text nav-text">View/Manage Couriers</span>
                         </a>
                     </li>
 
