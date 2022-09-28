@@ -23,9 +23,14 @@
   --tran-05: all 0.3s ease;
 }
 
+.btn-submit {
+  background-color: var(--primary-color) !important;
+  border: none !important;
+}
+
 body {
-  min-height: 100vh;
-  background-color: var(--body-color);
+  height: 100vh;
+  background-color: var(--body-color) !important;
   transition: var(--tran-05);
 }
 

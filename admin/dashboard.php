@@ -11,7 +11,7 @@ $customerRecord = $allCustomers -> fetchAll(PDO::FETCH_OBJ);
 
 <!-- Main Body Starts Here -->
 <div class="container">
-        <h3 class="text">Welcome Back, <?php if(isset($_SESSION['admin-email'])){ echo $_SESSION['admin-email'];}  ?></h3>
+        <h3 class="text mt-3">Welcome Back, <?php if(isset($_SESSION['admin-email'])){ echo $_SESSION['admin-email'];}  ?></h3>
 <!-- Analytics Start Here -->
     <div class="row mt-3">
       <div class="main-heading">

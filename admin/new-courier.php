@@ -1,66 +1,317 @@
 <?php 
 // Header
 include('../assets/template/admin/header.php');
+include('../assets/modules/dbconnection.php');
+
+// Sender Id
+$sender = $con -> prepare('select CustomerId, CustomerEmail from customer');
+$sender -> execute();
+$senderRecord = $sender -> fetchAll(PDO::FETCH_OBJ);
+
+// Countries
+$country = $con -> prepare('select CountryId, CountryName from country');
+$country -> execute();
+$countryRecord = $country -> fetchAll(PDO::FETCH_OBJ);
+
+// Weight Id
+$weight = $con -> prepare('select WeightClassId, WeightClassName, WeightClassFromLimit,WeightClassToLimit from weightclass');
+$weight -> execute();
+$weightRecord = $weight -> fetchAll(PDO::FETCH_OBJ);
+
+// Product Type
+$productType = $con -> prepare('select ProductTypeId, ProductTypeName from producttype');
+$productType -> execute();
+$productTypeRecord = $productType -> fetchAll(PDO::FETCH_OBJ);
+
+// Delivery Service
+$deliveryService = $con -> prepare('select DeliveryServiceId, DeliveryServiceName, DeliveryServiceTimeFrom, DeliveryServiceTimeTo from deliveryservice');
+$deliveryService -> execute();
+$deliveryServiceRecord = $deliveryService -> fetchAll(PDO::FETCH_OBJ);
+
+// Agent
+$agent = $con -> prepare('select AgentId, AgentEmail from agent');
+$agent -> execute();
+$agentRecord = $agent -> fetchAll(PDO::FETCH_OBJ);
+
+// Inserting Data
+if(isset($_REQUEST['courier-submit'])){
+  $senderId = $_REQUEST['courier-sender-email'];
+  $agentId = $_REQUEST['courier-agent-email'];
+  $receiverName  = $_REQUEST['courier-receiver-name'];
+  $senderAddress  = $_REQUEST['courier-sender-address'];
+  $receiverAddress  = $_REQUEST['courier-receiver-address'];
+  $receiverZipCode  = $_REQUEST['courier-receiver-zip-code'];
+  $receiverCity  = $_REQUEST['courier-receiver-city'];
+  $receiverCountry  = $_REQUEST['courier-receiver-country'];
+  $weightId  = $_REQUEST['courier-weight-id'];
+  $type  = $_REQUEST['courier-type'];
+  $deliveryService  = $_REQUEST['courier-delivery-service'];
+  $code = "Package" . rand(100, 999);
+  $date = date('Y-m-d');
+  $status = "Received";
+  $receiverNumber = $_REQUEST['courier-receiver-number'];
+
+  // Inserting Data
+  $sql = $con -> prepare('insert into package(PackageSenderId, PackageReceiverName, PackageReceiverNumber, PackageFromAddress, PackageToAddress, PackageReceiverZipCode, PackageReceiverCity, PackageReceiverCountry, PackageCode, PackageWeightId, PackageProductTypeId, PackageAgentId, PackageDeliveryServiceId, PackageStatus, PackageDateReceived) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)');
+  $sql -> bindParam(1, $senderId);
+  $sql -> bindParam(2, $receiverName);
+  $sql -> bindParam(3, $receiverNumber);
+  $sql -> bindParam(4, $senderAddress);
+  $sql -> bindParam(5, $receiverAddress);
+  $sql -> bindParam(6, $receiverZipCode);
+  $sql -> bindParam(7, $receiverCity);
+  $sql -> bindParam(8, $receiverCountry);
+  $sql -> bindParam(9, $code);
+  $sql -> bindParam(10, $weightId);
+  $sql -> bindParam(11, $type);
+  $sql -> bindParam(12,$agentId);
+  $sql -> bindParam(13,$deliveryService);
+  $sql -> bindParam(14,$status);
+  $sql -> bindParam(15,$date);
+
+  $sql->execute();
+}
+
 ?>
-<!-- Links -->
-<!-- CSS -->
-<link rel="stylesheet" href="../assets/CSS/adminCSS/newcourier.css">
-<!-- JS -->
-<script src="../assets/JS/adminJS/newcourier.js"></script>
-<!-- JQuery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-steps/1.1.0/jquery.steps.min.js"></script>
+
+<!-- Select 2 Link -->
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
 
 <!-- Main Content Starts Here -->
-<div class="wrapper">
-    <form method="POST">
-        <div id="wizard">
-            <!-- SECTION 1 -->
-            <h4></h4>
-            <section>
-                <div class="form-row"> <input type="text" class="form-control" placeholder="Name"> </div>
-                <div class="form-row"> <input type="text" class="form-control" placeholder="Email"> </div>
-                <div class="form-row"> <input type="text" class="form-control" placeholder="Phone number"> </div>
-                <div class="form-row"> <input type="text" class="form-control" placeholder="Street address"> </div>
-            </section> <!-- SECTION 2 -->
-            <h4></h4>
-            <section>
-                <div class="form-row"> <input type="text" class="form-control" placeholder="country"> </div>
-                <div class="form-row"> <input type="text" class="form-control" placeholder="zip code"> </div>
-                <div class="form-row" style="margin-bottom: 18px"> <textarea name="" id="" class="form-control" placeholder="Any order note about delivery or special offer" style="height: 108px"></textarea> </div>
-            </section> <!-- SECTION 3 -->
-            <h4></h4>
-            <section>
-                <div class="product">
-                    <div class="item">
-                        <div class="left"> <a href="#" class="thumb"> <img src="https://i.imgur.com/yYu3Hbl.jpg" alt=""> </a>
-                            <div class="purchase">
-                                <h6> <a href="#">Macbook Air Laptop</a> </h6> <span>x1</span>
-                            </div>
-                        </div> <span class="price">$290</span>
-                    </div>
-                    <div class="item">
-                        <div class="left"> <a href="#" class="thumb"> <img src="https://www.businessinsider.in/thumb/msid-70101317,width-600,resizemode-4,imgsize-87580/tech/ways-to-increase-mobile-phone-speed/13d0e0722dbca5aa91e16a8ae2a744e5.jpg" alt=""> </a>
-                            <div class="purchase">
-                                <h6> <a href="#">Mobile Phone Mi</a> </h6> <span>x1</span>
-                            </div>
-                        </div> <span class="price">$124</span>
-                    </div>
-                </div>
-                <div class="checkout">
-                    <div class="subtotal"> <span class="heading">Subtotal</span> <span class="total">$364</span> </div>
-                </div>
-            </section> <!-- SECTION 4 -->
-            <h4></h4>
-            <section>
-                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
-                    <circle class="path circle" fill="none" stroke="#73AF55" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1" />
-                    <polyline class="path check" fill="none" stroke="#73AF55" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 " />
-                </svg>
-                <p class="success">Order placed successfully. Your order will be dispacted soon. meanwhile you can track your order in my order section.</p>
-            </section>
+<div class="container my-5">
+  <div class="card mx-lg-5 p-lg-5">
+    <!-- Form -->
+    <form method="POST" >
+      <!-- Card header -->
+      <div class="card-header py-4 px-5 bg-light border-0">
+        <h4 class="mb-0 fw-bold">Create A New Courier</h4>
+      </div>
+
+      <!-- Card body -->
+      <div class="card-body">
+        <!-- Basic Info section -->
+        <div class="row gx-xl-5">
+          <div class="col-md-4">
+            <h5>Basic Info</h5>
+          </div>
+          <!-- Form Inputs Start Here -->
+
+          <div class="col-md-8">
+            <div class="mb-3">
+              <label class="form-label" for="courier-sender-email"
+                    >Courier Sender Email</label
+                >
+                <select name="courier-sender-email" class="search-select form-select" id="courier-sender-email" >
+                  <option selected disabled></option>
+                  <?php 
+                  foreach($senderRecord as $row){
+                    ?>
+                    <option value="<?php echo $row->CustomerId ?>"><?php echo $row->CustomerEmail ?></option>
+                    <?php
+                  }
+                  ?>
+                </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="courier-agent-email" class="form-label"
+                    >Agent Email</label
+                >
+               <select name="courier-agent-email" id=" courier-agent-email" class=" search-select form-select" >
+                  <option selected disabled></option>
+                  <?php 
+                  foreach($agentRecord as $row){
+                    ?>
+                    <option value="<?php echo $row->AgentId ?>"><?php echo $row->AgentEmail ?></option>
+                    <?php
+                  }
+                  ?>
+                </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="courier-receiver-name" class="form-label"
+                    >Courier Receiver Name</label
+                >
+              <input type="text" name="courier-receiver-name" class="form-control" id="courier-receiver-name"/>
+            </div>
+            <div class="mb-3">
+              <label for="courier-receiver-number" class="form-label"
+                    >Courier Receiver Number</label
+                >
+              <input type="number" name="courier-receiver-number" class="form-control" id="courier-receiver-number"/>
+              <p class="text-muted">Kindly write the receiver's number containing your country code</p>
+            </div>
+          </div>
         </div>
+
+        <hr class="my-5" />
+
+        <!-- Address section -->
+        <div class="row gx-xl-5">
+          <div class="col-md-4">
+            <h5>Address</h5>
+          </div>
+
+          <div class="col-md-8">
+            <div class="row ">
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="courier-sender-address" class="form-label">Courier Sender Address</label>
+                  <input
+                         type="text"
+                         class="form-control"
+                         id="courier-sender-address"
+                         name="courier-sender-address"
+                         />
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <label for="courier-receiver-address" class="form-label"
+                       >Courier Receiver Address</label
+                  >
+                  <input
+                        type="text"
+                        class="form-control"
+                        id="courier-receiver-address"
+                        name="courier-receiver-address"
+                        />
+                </div>
+                <div class="col-md-12 mb-3">
+                <label for="courier-receiver-zip-code" class="form-label"
+                       >Courier Receiver's Zip Code</label
+                  >
+                  <input
+                        type="text"
+                        class="form-control"
+                        id="courier-receiver-zip-code"
+                        name="courier-receiver-zip-code"
+                        />
+                </div>
+                <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="courier-receiver-city" class="form-label">Courier Receiver's City</label>
+                  <input type="text" class="form-control" id="courier-receiver-city" name="courier-receiver-city">
+                </div>
+                <div class="col-md-6">
+                  <label for="courier-receiver-country" class="form-label">Courier Receiver's Country</label>
+                  <select name="courier-receiver-country" id="courier-receiver-country" class="search-select form-select">
+                    <option selected disabled></option>
+                    <?php foreach($countryRecord as $row){
+                      ?>
+                        <option value="<?php echo $row->CountryId ?>"><?php echo $row->CountryName ?></option>
+                      <?php
+                    }
+                    ?>
+                  </select>
+                </div>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+
+        <hr class="my-5" />
+
+        <!-- Additional Info -->
+        <div class="row gx-xl-5">
+          <div class="col-md-4">
+            <h5>Additional Info</h5>
+          </div>
+
+          <div class="col-md-8">
+            <div class="mb-3">
+              <label for="courier-weight-id" class="form-label"
+                    >Courier Weight Class</label
+                >
+                <select name="courier-weight-id" id="courier-weight-id" class="search-select form-select">
+                  <option disabled selected></option>
+                  <?php 
+                  foreach($weightRecord as $row){
+                    ?> 
+                    <option value="<?php echo $row->WeightClassId ?>"><?php echo $row->WeightClassName ?></option>
+                    <?php
+                  }
+                  ?>
+                </select>
+                <!-- Limits -->
+                <div>
+                  <?php 
+                  foreach($weightRecord as $row){
+                    ?>
+                    <p class="text-muted"><?php echo $row->WeightClassName ?>: <?php echo $row->WeightClassFromLimit ?> - <?php echo $row->WeightClassToLimit ?></p>
+                    <?php 
+                  }
+                  ?>
+                </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="courier-type" class="form-label">Courier Type</label>
+                  <select name="courier-type" id="courier-type" class="search-select form-select">
+                    <option disabled selected></option>
+                    <?php 
+                    foreach($productTypeRecord as $row){
+                      ?>
+                      <option value="<?php echo $row->ProductTypeId ?>"><?php echo $row->ProductTypeName ?></option>
+                      <?php
+                    }
+                    ?>
+                  </select>
+              </div>
+                  </div>
+
+              <div class="col-md-6">
+                <label for="courier-delivery-service" class="form-label">Courier Delivery Service</label>
+                <select name="courier-delivery-service" id="courier-delivery-service" class="search-select form-select">
+                    <option disabled selected></option>
+                    <?php 
+                    foreach($deliveryServiceRecord as $row){
+                      ?>
+                      <option value="<?php echo $row->DeliveryServiceId ?>"><?php echo $row->DeliveryServiceName ?></option>
+                      <?php
+                    }
+                    ?>
+                  </select>
+                  <!-- Limits -->
+                <div>
+                  <?php 
+                  foreach($deliveryServiceRecord as $row){
+                    ?>
+                    <p class="text-muted"><?php echo $row->DeliveryServiceName ?>: <?php echo $row->DeliveryServiceTimeFrom ?> - <?php echo $row->DeliveryServiceTimeTo ?></p>
+                    <?php 
+                  }
+                  ?>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Card footer -->
+      <div class="card-footer text-end py-4 px-5 bg-light border-0">
+        <button type="submit" class="btn btn-primary btn-rounded btn-submit" name="courier-submit">
+          Submit
+        </button>
+      </div>
     </form>
+  </div>
 </div>
+
+<!-- Select 2 JS -->
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('.search-select').select2();
+});
+</script>
 <?php 
 // Footer
 include('../assets/template/admin/footer.php');
