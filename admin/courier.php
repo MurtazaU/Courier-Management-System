@@ -193,10 +193,10 @@ $deliveryServiceRecord = $deliveryService -> fetchAll(PDO::FETCH_OBJ);
                 <td class="text">
                     <div class="row">
                         <div class="col-12">
-                            <a href="./update-courier.php?courier-id=<?php echo $row->PackageId; ?>"><button type="submit" class="btn"><i class="fa-solid fa-pen-to-square"></i></button></a>
+                            <a href="./update-courier.php?courier-id=<?php echo $row->PackageId; ?>"><button type="submit" class="btn text"><i class="fa-solid fa-pen-to-square"></i></button></a>
                         </div>
                         <div class="col-12">
-                            <a href="#"><button type="submit" class="btn"><i class="fa-solid fa-trash"></i></button></a>
+                            <a href="./delete-courier.php?courier-id=<?php echo $row->PackageId; ?>"><button type="submit" class="btn text"><i class="fa-solid fa-trash"></i></button></a>
                         </div>
                     </div>
                 </td>
