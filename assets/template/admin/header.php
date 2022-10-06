@@ -82,16 +82,16 @@ if(!isset($_SESSION['admin-email'])){
                     </li>
 
                     <li class="nav-link">
-                        <a href="#">
-                            <i class='bx bx-pie-chart-alt icon' ></i>
-                            <span class="text nav-text">Analytics</span>
+                        <a href="./agent.php">
+                            <i class='fa-solid fa-user-secret icon' ></i>
+                            <span class="text nav-text">Manage Agents</span>
                         </a>
                     </li>
 
                     <li class="nav-link">
                         <a href="#">
-                            <i class='bx bx-heart icon' ></i>
-                            <span class="text nav-text">Likes</span>
+                            <i class='fa-solid fa-plus icon' ></i>
+                            <span class="text nav-text">Create New Agent</span>
                         </a>
                     </li>
 
