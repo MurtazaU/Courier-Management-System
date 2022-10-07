@@ -44,10 +44,10 @@ if (isset($_REQUEST['submit'])) {
     $sql->bindParam(7, $agentId);
 
     $sql->execute();
-// ?>
+ ?>
   <script>
         window.location.href = "./agent.php";
-//     </script>
+     </script>
  <?php
 }
 
