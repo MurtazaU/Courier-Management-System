@@ -89,7 +89,7 @@ if(!isset($_SESSION['admin-email'])){
                     </li>
 
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="./new-agent.php">
                             <i class='fa-solid fa-plus icon' ></i>
                             <span class="text nav-text">Create New Agent</span>
                         </a>

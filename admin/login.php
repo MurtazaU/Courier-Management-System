@@ -56,7 +56,7 @@ if(isset($_REQUEST['adminSubmit'])){
         <!-- Form Container Starts Here -->
         <div class="  rounded-3 my-5 ">
           <div class="card-body p-4 p-sm-5">
-            <h3 class=" text-center mb-5">Sign In</h3>
+            <h3 class=" text-center mb-5">Sign In As An Admin</h3>
             <!-- Form Starts Here -->
             <form method="POST">
                 <!-- Email Input -->
