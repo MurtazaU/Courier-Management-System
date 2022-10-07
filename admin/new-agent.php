@@ -14,6 +14,7 @@ if(isset($_POST['submit'])){
     $agentPassword = $_POST['agent-password'];
     $confirmPassword = $_POST['confirm-agent-password'];
     $agentFranchiseId = $_POST['agent-franchise'];
+    $date = date("Y-m-d");
 
     // Check to see if there is already an agent with the same email
     $check = $con -> prepare('select * from agent where AgentEmail = ?');
@@ -24,11 +25,12 @@ if(isset($_POST['submit'])){
     if($confirmPassword == $agentPassword){
         if($checkCount == 0){
         // Query
-        $sql = $con -> prepare('insert into agent(AgentName, AgentEmail, AgentPassword, AgentFranchiseId) values (?,?,?,?)');
+        $sql = $con -> prepare('insert into agent(AgentName, AgentEmail, AgentPassword, AgentFranchiseId, AgentRegistrationDate) values (?,?,?,?,?)');
         $sql -> bindParam(1, $agentName);
         $sql -> bindParam(2, $agentEmail);
         $sql -> bindParam(3, $agentPassword);
         $sql -> bindParam(4, $agentFranchiseId);
+        $sql -> bindParam(5, $date);
         $sql -> execute();
     } else{
         echo    '<div class="alert text text-center alert-danger" role="alert">

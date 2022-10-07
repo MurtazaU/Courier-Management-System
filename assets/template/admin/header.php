@@ -96,9 +96,9 @@ if(!isset($_SESSION['admin-email'])){
                     </li>
 
                     <li class="nav-link">
-                        <a href="#">
-                            <i class='bx bx-wallet icon' ></i>
-                            <span class="text nav-text">Wallets</span>
+                        <a href="./customer.php">
+                            <i class="fa-solid fa-users icon"></i>
+                            <span class="text nav-text">Manage Customer</span>
                         </a>
                     </li>
 

@@ -19,7 +19,7 @@ $totalAgentsCount = $agents->rowCount();
 $agentsRecord = $agents->fetchAll(PDO::FETCH_OBJ);
 
 // Franchise Id
-$franchise = $con -> prepare('select FranchiseId, FranchiseCode, FranchiseAddress from franchise');
+$franchise = $con -> prepare('select FranchiseId, FranchiseCode, FranchiseAddress, FranchiseCity, FranchiseState, FranchiseCountryId from franchise');
 $franchise -> execute();
 $franchiseRecord = $franchise -> fetchAll(PDO::FETCH_OBJ);
 
@@ -44,7 +44,7 @@ $countryRecord = $country -> fetchAll(PDO::FETCH_OBJ);
                 <div class="card-statistic-3 p-4">
                     <div class="card-icon card-icon-large">
                       <!-- Icon -->
-                      <i class="fas fa-box"></i>
+                      <i class="fas fa-user-secret"></i>
                     </div>
                     <div class="mb-4">
                       <!-- Main Heading -->
@@ -72,7 +72,7 @@ $countryRecord = $country -> fetchAll(PDO::FETCH_OBJ);
                 <div class="card-statistic-3 p-4">
                     <div class="card-icon card-icon-large">
                       <!-- Icon -->
-                      <i class="fas fa-boxes-stacked"></i>
+                      <i class="fas fa-user-secret"></i>
                     </div>
                     <div class="mb-4">
                         <!-- Main Heading -->
@@ -116,7 +116,6 @@ $countryRecord = $country -> fetchAll(PDO::FETCH_OBJ);
                 <th class="table-row-head">Agent City</th>
                 <th class="table-row-head">Agent State</th>
                 <th class="table-row-head">Agent Country</th>
-                <th class="table-row-head">Agent IP Address</th>
                 <th class="table-row-head">Agent Registration Date</th>
                 <th class="table-row-head">Actions</th>
                 </tr>
@@ -151,19 +150,34 @@ $countryRecord = $country -> fetchAll(PDO::FETCH_OBJ);
                     } ?>
                 </td>
                 <!-- City -->
-                <td class="text"><?php echo $row-> AgentCity?></td>
-                <!-- State -->
-                <td class="text"><?php echo $row-> AgentState?></td>
-                <!-- Country -->
                 <td class="text">
-                    <?php foreach($countryRecord as $country){ 
-                    if($row->AgentCountryId == $country -> CountryId){
-                        echo $country->CountryName;
+                    <?php foreach($franchiseRecord as $franchise){ 
+                    if($row->AgentFranchiseId == $franchise -> FranchiseId){
+                        echo $franchise->FranchiseCity;
                     } 
                     } ?>
                 </td>
-                <!-- IP Address -->
-                <td class="text"><?php echo $row-> AgentIP?></td>
+                <!-- State -->
+                <td class="text">
+                    <?php foreach($franchiseRecord as $franchise){ 
+                    if($row->AgentFranchiseId == $franchise -> FranchiseId){
+                        echo $franchise->FranchiseState;
+                    } 
+                    } ?>
+                </td>
+                <!-- Country -->
+                <td class="text">
+                    <?php 
+                        foreach($franchiseRecord as $franchise){ 
+                        if($row->AgentFranchiseId == $franchise -> FranchiseId){
+                        foreach($countryRecord as $country){ 
+                        if($franchise->FranchiseCountryId == $country -> CountryId){
+                        echo $country->CountryName;
+                    } 
+                    }
+                    } 
+                    } ?>
+                </td>
                 <!-- Registration Date -->
                 <td class="text"><?php echo $row-> AgentRegistrationDate?></td>
 
