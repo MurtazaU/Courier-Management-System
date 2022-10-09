@@ -1,19 +1,20 @@
-<?php 
+<?php
 session_start();
-if(!isset($_SESSION['admin-email'])){
-  header("location: ./login.php");
+if (!isset($_SESSION['admin-email'])) {
+    header("location: ./login.php");
 }
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- Main Sidebar CSS -->
     <link rel="stylesheet" href="../assets/CSS/adminCSS/main-admin.css">
-    
+
     <!-- Boxicon CSS -->
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 
@@ -29,12 +30,16 @@ if(!isset($_SESSION['admin-email'])){
     <!-- Jquery JS Link -->
     <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 
+    <!-- AJAX Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
     <!-- Table CSS -->
     <link rel="stylesheet" href="../assets/CSS/adminCSS/table.css">
 
-    
-    <title>Admin</title> 
+
+    <title>Admin</title>
 </head>
+
 <body>
     <nav class="sidebar open">
         <header>
@@ -44,7 +49,7 @@ if(!isset($_SESSION['admin-email'])){
                 </span>
 
                 <div class="text logo-text">
-                  <img src="../assets/img/web-logo.png" alt="Logo" height="50px">
+                    <img src="../assets/img/web-logo.png" alt="Logo" height="50px">
                 </div>
             </div>
 
@@ -82,15 +87,22 @@ if(!isset($_SESSION['admin-email'])){
                     </li>
 
                     <li class="nav-link">
+                        <a href="./courier-status.php">
+                            <i class="fa-solid fa-cube icon"></i>
+                            <span class="text nav-text">Manage Courier Status</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
                         <a href="./agent.php">
-                            <i class='fa-solid fa-user-secret icon' ></i>
+                            <i class='fa-solid fa-user-secret icon'></i>
                             <span class="text nav-text">Manage Agents</span>
                         </a>
                     </li>
 
                     <li class="nav-link">
                         <a href="./new-agent.php">
-                            <i class='fa-solid fa-plus icon' ></i>
+                            <i class='fa-solid fa-plus icon'></i>
                             <span class="text nav-text">Create New Agent</span>
                         </a>
                     </li>
@@ -108,7 +120,7 @@ if(!isset($_SESSION['admin-email'])){
             <div class="bottom-content">
                 <li class="">
                     <a href="../assets/modules/logout.php">
-                        <i class='bx bx-log-out icon' ></i>
+                        <i class='bx bx-log-out icon'></i>
                         <span class="text nav-text">Logout</span>
                     </a>
                 </li>
@@ -124,7 +136,7 @@ if(!isset($_SESSION['admin-email'])){
                         <span class="switch"></span>
                     </div>
                 </li>
-                
+
             </div>
         </div>
 

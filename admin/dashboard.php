@@ -7,6 +7,9 @@ $allCustomers = $con -> prepare('select * from customer');
 $allCustomers -> execute();
 $customerCount =  $allCustomers -> rowCount();
 $customerRecord = $allCustomers -> fetchAll(PDO::FETCH_OBJ);
+
+// New Couriers
+
 ?>
 
 <!-- Main Body Starts Here -->

@@ -98,7 +98,7 @@ $countryRecord = $country->fetchAll(PDO::FETCH_OBJ);
   <div class="row">
     <div class="col-12">
         <!-- Customers -->
-        <table class="table text">
+        <table class="table desc-table text">
             <!-- Table Head -->
             <thead>
                 <tr>
