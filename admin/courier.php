@@ -1,6 +1,7 @@
 <?php
+// Header
 include('../assets/template/admin/header.php');
-
+// DB Connection
 include('../assets/modules/dbconnection.php');
 
 // New Couriers Analytics
@@ -44,7 +45,7 @@ $deliveryService->execute();
 $deliveryServiceRecord = $deliveryService->fetchAll(PDO::FETCH_OBJ);
 
 // Franchise Id
-$franchise = $con->prepare('select FranchiseId, FranchiseName from franchise');
+$franchise = $con->prepare('select FranchiseId, FranchiseName, FranchiseCity from franchise');
 $franchise->execute();
 $franchiseRecord = $franchise->fetchAll(PDO::FETCH_OBJ);
 ?>
@@ -129,6 +130,67 @@ $franchiseRecord = $franchise->fetchAll(PDO::FETCH_OBJ);
         </div>
     </section>
     <!-- New Section Ends Here -->
+
+    <!-- Reports Section Starts Here -->
+    <section class="report">
+        <div class="row m-5 mt-0">
+            <h2 class="text text-center">Download Report</h2>
+            <div class="col-6">
+                <h4 class="text text-center">Date Wise</h4>
+                <!-- Date Wise Form -->
+                <form method="POST" action="../assets/modules/download-report-by-date.php">
+                    <div class="row">
+                        <div class="col-8" style="width: 60%;">
+                            <!-- Select -->
+                            <select name="download-report-date-wise" id="ReportDateWise" class="form-select">
+                                <option value="5">All Time</option>
+                                <option value="1">Today</option>
+                                <option value="2">Last 7 Days</option>
+                                <option value="3">Last 14 Days</option>
+                                <option value="4">Last 30 Days</option>
+                            </select>
+                        </div>
+                        <div class="col-4">
+                            <!-- Download Button -->
+                            <button name="report-date" type="submit" style="width: 100%;" class="btn l-bg-green-dark">Download</button>
+                        </div>
+                    </div>
+
+
+                </form>
+
+            </div>
+            <div class="col-6">
+                <h4 class="text text-center">City Wise</h4>
+                <!-- Date Wise Form -->
+                <form method="POST" action="../assets/modules/download-report-by-city.php">
+                    <div class="row">
+                        <div class="col-8" style="width: 60%;">
+                            <!-- Select -->
+                            <select name="download-report-city-wise" id="ReportDateWise" class="form-select">
+                                <?php
+                                foreach ($franchiseRecord as $row) {
+                                ?>
+                                    <option value="<?php echo $row->FranchiseCity ?>"><?php echo $row->FranchiseCity ?></option>
+                                <?php
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <div class="col-4">
+                            <!-- Download Button -->
+                            <button name="report-city" type="submit" style="width: 100%;" class="btn l-bg-blue-dark">Download</button>
+                        </div>
+                        <p class="text text-muted">The above cities, are where our franchises are located.</p>
+                    </div>
+
+
+                </form>
+
+            </div>
+        </div>
+    </section>
+    <!-- Reports Section Ends Here -->
 
 
     <!-- Tables Start Here -->

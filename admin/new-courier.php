@@ -34,7 +34,7 @@ $agent->execute();
 $agentRecord = $agent->fetchAll(PDO::FETCH_OBJ);
 
 // Franchise
-$franchise = $con->prepare('select FranchiseId, FranchiseName from franchise');
+$franchise = $con->prepare('select FranchiseId, FranchiseName, FranchiseCity from franchise');
 $franchise->execute();
 $franchiseRecord = $franchise->fetchAll(PDO::FETCH_OBJ);
 
@@ -53,9 +53,15 @@ if (isset($_REQUEST['courier-submit'])) {
   $deliveryService  = $_REQUEST['courier-delivery-service'];
   $code = "CR-" . rand(100, 99999);
   $date = date('Y-m-d');
-  $status = "Received";
+  $status = "Registered";
   $receiverNumber = $_REQUEST['courier-receiver-number'];
   $franchiseId = $_REQUEST['courier-franchise-id'];
+
+  foreach ($franchiseRecord as $row) {
+    if ($row->FranchiseId == $franchiseId) {
+      $registrationCity = $row->FranchiseCity;
+    }
+  }
 
   $codeQuery = $con->prepare('select PackageCode from package where PackageCode = ?');
   $codeQuery->bindParam(1, $code);
@@ -65,7 +71,7 @@ if (isset($_REQUEST['courier-submit'])) {
   if ($codeCount > 0) {
     $newCode = "CR-" . rand(100, 99999);
     // Inserting Data
-    $sql = $con->prepare('insert into package(PackageSenderId, PackageReceiverName, PackageReceiverNumber, PackageFromAddress, PackageToAddress, PackageReceiverZipCode, PackageReceiverCity, PackageReceiverCountry, PackageCode, PackageWeightId, PackageProductTypeId, PackageAgentId, PackageFranchiseId, PackageDeliveryServiceId, PackageStatus, PackageDateReceived) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)');
+    $sql = $con->prepare('insert into package(PackageSenderId, PackageReceiverName, PackageReceiverNumber, PackageFromAddress, PackageToAddress, PackageReceiverZipCode, PackageReceiverCity, PackageReceiverCountry, PackageCode, PackageWeightId, PackageProductTypeId, PackageAgentId, PackageFranchiseId, PackageDeliveryServiceId, PackageStatus, PackageDateReceived, PackageRegistrationCity) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)');
     $sql->bindParam(1, $senderId);
     $sql->bindParam(2, $receiverName);
     $sql->bindParam(3, $receiverNumber);
@@ -82,11 +88,12 @@ if (isset($_REQUEST['courier-submit'])) {
     $sql->bindParam(14, $deliveryService);
     $sql->bindParam(15, $status);
     $sql->bindParam(16, $date);
+    $sql->bindParam(17, $registrationCity);
 
     $sql->execute();
   } else {
     // Inserting Data
-    $sql = $con->prepare('insert into package(PackageSenderId, PackageReceiverName, PackageReceiverNumber, PackageFromAddress, PackageToAddress, PackageReceiverZipCode, PackageReceiverCity, PackageReceiverCountry, PackageCode, PackageWeightId, PackageProductTypeId, PackageAgentId, PackageFranchiseId, PackageDeliveryServiceId, PackageStatus, PackageDateReceived) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)');
+    $sql = $con->prepare('insert into package(PackageSenderId, PackageReceiverName, PackageReceiverNumber, PackageFromAddress, PackageToAddress, PackageReceiverZipCode, PackageReceiverCity, PackageReceiverCountry, PackageCode, PackageWeightId, PackageProductTypeId, PackageAgentId, PackageFranchiseId, PackageDeliveryServiceId, PackageStatus, PackageDateReceived, PackageRegistrationCity) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)');
     $sql->bindParam(1, $senderId);
     $sql->bindParam(2, $receiverName);
     $sql->bindParam(3, $receiverNumber);
@@ -103,6 +110,7 @@ if (isset($_REQUEST['courier-submit'])) {
     $sql->bindParam(14, $deliveryService);
     $sql->bindParam(15, $status);
     $sql->bindParam(16, $date);
+    $sql->bindParam(17, $registrationCity);
 
     $sql->execute();
   }
