@@ -39,9 +39,9 @@ $packageRecord = $package->fetchAll(PDO::FETCH_OBJ);
                                     <div class="status-text col-4">
                                         <?php
                                         // Received
-                                        if ($row->PackageStatus == "Received") {
+                                        if ($row->PackageStatus == "Registered") {
                                         ?>
-                                            <div class="status-primary ">Received</div>
+                                            <div class="status-primary ">Registered</div>
                                         <?php
                                         }
                                         // UnderWay

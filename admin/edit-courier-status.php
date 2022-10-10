@@ -14,10 +14,12 @@ $packageRecord = $sql->fetchAll(PDO::FETCH_OBJ);
 
 // In Progress
 if (isset($_REQUEST['inProgress'])) {
+    $null = null;
     $progress = "In Progress";
-    $inProgressStatus = $con->prepare('update package set PackageStatus = ? where PackageId = ?');
+    $inProgressStatus = $con->prepare('update package set PackageStatus = ?, PackageDateDelivered = ? where PackageId = ?');
     $inProgressStatus->bindParam(1, $progress);
-    $inProgressStatus->bindParam(2, $courierId);
+    $inProgressStatus->bindParam(2, $null);
+    $inProgressStatus->bindParam(3, $courierId);
     $inProgressStatus->execute();
 ?>
     <script>
@@ -28,10 +30,12 @@ if (isset($_REQUEST['inProgress'])) {
 
 // Delivered
 if (isset($_REQUEST['delivered'])) {
+    $date = date("Y-m-d");
     $delivered = "Delivered";
-    $deliveryStatus = $con->prepare('update package set PackageStatus = ? where PackageId = ?');
+    $deliveryStatus = $con->prepare('update package set PackageStatus = ?, PackageDateDelivered = ? where PackageId = ?');
     $deliveryStatus->bindParam(1, $delivered);
-    $deliveryStatus->bindParam(2, $courierId);
+    $deliveryStatus->bindParam(2, $date);
+    $deliveryStatus->bindParam(3, $courierId);
     $deliveryStatus->execute();
 ?>
     <script>
