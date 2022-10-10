@@ -9,7 +9,7 @@ include('../assets/modules/dbconnection.php');
 $franchise = $con->prepare('select * from franchise');
 $franchise->execute();
 
-// Total Agent Count
+// Total Franchise Count
 $franchiseCount = $franchise->rowCount();
 $franchiseRecord = $franchise->fetchAll(PDO::FETCH_OBJ);
 
@@ -34,7 +34,7 @@ $countryRecord = $country->fetchAll(PDO::FETCH_OBJ);
                 <div class="card-statistic-3 p-4">
                     <div class="card-icon card-icon-large">
                         <!-- Icon -->
-                        <i class="fas fa-user-secret"></i>
+                        <i class="fas fa-building icon"></i>
                     </div>
                     <div class="mb-4">
                         <!-- Main Heading -->

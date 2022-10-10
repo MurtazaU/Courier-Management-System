@@ -16,7 +16,7 @@ if (isset($_POST['submit'])) {
     $franchiseState = $_POST['franchise-state'];
     $franchiseCountryId = $_POST['franchise-country'];
     $franchiseEmail = $_POST['franchise-email'];
-    $franchiseCode = 'FR' . rand(100, 999);
+    $franchiseCode = 'FR-' . rand(100, 999);
 
     // Check to see if there is already an agent with the same code
     $check = $con->prepare('select * from franchise where FranchiseCode = ?');
