@@ -118,6 +118,19 @@ $franchiseRecord = $franchise->fetchAll(PDO::FETCH_OBJ);
     </div>
     <!-- Analytics End Here -->
 
+    <!-- New Section Starts Here -->
+    <section>
+        <div class="row m-5 mt-0">
+            <div class="col-12">
+                <a href="./new-courier.php">
+                    <button class="btn l-bg-cherry mt-3 w-100">Create New Courier</button>
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- New Section Ends Here -->
+
+
     <!-- Tables Start Here -->
 
     <div class="row">
@@ -170,7 +183,6 @@ $franchiseRecord = $franchise->fetchAll(PDO::FETCH_OBJ);
                                     }
                                 } ?>
                             </td>
-                            <td class="text"><?php echo $row->PackageSpecialService ?></td>
                             <td class="text">
                                 <?php foreach ($productTypeRecord as $productType) {
                                     if ($row->PackageProductTypeId == $productType->ProductTypeId) {

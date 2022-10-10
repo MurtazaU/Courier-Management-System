@@ -27,15 +27,15 @@ $courier = $con->prepare('select PackageId, PackageSenderId, PackageAgentId, Pac
 $courier->execute();
 $courierRecord = $courier->fetchAll(PDO::FETCH_OBJ);
 
-// Customer
-$customer = $con->prepare('select CustomerId, CustomerName, CustomerEmail, CustomerCountryId, CustomerNumber from customer ORDER BY RAND() Limit 4');
-$customer->execute();
-$customerRecord = $customer->fetchAll(PDO::FETCH_OBJ);
+// Agents For Courier
+$courierAgent = $con->prepare('select AgentId, AgentEmail from agent');
+$courierAgent->execute();
+$courierAgentRecord = $courierAgent->fetchAll(PDO::FETCH_OBJ);
 
-// Agents
-$agent = $con->prepare('select AgentId, AgentEmail, AgentRegistrationDate, AgentFranchiseId, AgentName from agent ORDER BY RAND() Limit 4');
-$agent->execute();
-$agentRecord = $agent->fetchAll(PDO::FETCH_OBJ);
+// Customer For Courier
+$courierCustomer = $con->prepare('select CustomerId, CustomerEmail from customer');
+$courierCustomer->execute();
+$courierCustomerRecord = $courierCustomer->fetchAll(PDO::FETCH_OBJ);
 
 // Received Courier
 $received = "Received";
@@ -58,10 +58,32 @@ $deliveredCourier->bindParam(1, $received);
 $deliveredCourier->execute();
 $deliveredCourierCount = $deliveredCourier->rowCount();
 
+// Customer
+$customer = $con->prepare('select CustomerId, CustomerName, CustomerEmail, CustomerCountryId, CustomerNumber from customer ORDER BY RAND() Limit 4');
+$customer->execute();
+$customerRecord = $customer->fetchAll(PDO::FETCH_OBJ);
+
+// Agents
+$agent = $con->prepare('select AgentId, AgentEmail, AgentRegistrationDate, AgentFranchiseId, AgentName from agent ORDER BY RAND() Limit 4');
+$agent->execute();
+$agentRecord = $agent->fetchAll(PDO::FETCH_OBJ);
+
+// Agent Franchise
+$agentFranchise = $con->prepare('select FranchiseId, FranchiseName from franchise');
+$agentFranchise->execute();
+$agentFranchiseRecord = $agentFranchise->fetchAll(PDO::FETCH_OBJ);
+$totalFranchiseCount = $agentFranchise->rowCount();
+
 // Franchise
-$franchise = $con->prepare('select FranchiseId, FranchiseName from franchise');
+$franchise = $con->prepare('select FranchiseId, FranchiseName, FranchiseCode, FranchiseAddress, FranchiseCity, FranchiseState, FranchiseCountryId from franchise ORDER BY RAND()');
 $franchise->execute();
 $franchiseRecord = $franchise->fetchAll(PDO::FETCH_OBJ);
+
+// Counties For All
+$country = $con->prepare('select CountryId, CountryName from country');
+$country->execute();
+$countryRecord = $country->fetchAll(PDO::FETCH_OBJ);
+
 ?>
 
 <!-- Main Body Starts Here -->
@@ -182,14 +204,14 @@ $franchiseRecord = $franchise->fetchAll(PDO::FETCH_OBJ);
                     ?>
                         <tr>
                             <th><?php echo $row->PackageId ?></th>
-                            <td><?php foreach ($customerRecord as $customer) {
+                            <td><?php foreach ($courierCustomerRecord as $customer) {
                                     if ($row->PackageSenderId == $customer->CustomerId) {
-                                        echo $customer->CustomerName;
+                                        echo $customer->CustomerEmail;
                                     }
                                 } ?></td>
                             <td><?php echo $row->PackageReceiverName ?></td>
                             <td><?php echo $row->PackageCode ?></td>
-                            <td><?php foreach ($agentRecord as $agent) {
+                            <td><?php foreach ($courierAgentRecord as $agent) {
                                     if ($row->PackageAgentId == $agent->AgentId) {
                                         echo $agent->AgentEmail;
                                     }
@@ -203,7 +225,7 @@ $franchiseRecord = $franchise->fetchAll(PDO::FETCH_OBJ);
                 </tbody>
             </table>
             <a href="./courier.php">
-                <button class="btn l-bg-cherry mt-3 w-100">View All Couriers</button>
+                <button class="btn l-bg-cherry mt-3 w-100">View, Edit, And Create New Couriers</button>
             </a>
         </div>
         <!-- Analytics -->
@@ -217,7 +239,7 @@ $franchiseRecord = $franchise->fetchAll(PDO::FETCH_OBJ);
                             <div class="card-statistic-3 p-4">
                                 <div class="card-icon card-icon-large">
                                     <!-- Icon -->
-                                    <i class="fas fa-building-shield"></i>
+                                    <i class="fas fa-boxes-stacked icon"></i>
                                 </div>
                                 <div class="mb-4">
                                     <!-- Main Heading -->
@@ -247,7 +269,7 @@ $franchiseRecord = $franchise->fetchAll(PDO::FETCH_OBJ);
                             <div class="card-statistic-3 p-4">
                                 <div class="card-icon card-icon-large">
                                     <!-- Icon -->
-                                    <i class="fas fa-building-shield"></i>
+                                    <i class="fas fa-boxes-stacked icon"></i>
                                 </div>
                                 <div class="mb-4">
                                     <!-- Main Heading -->
@@ -279,7 +301,7 @@ $franchiseRecord = $franchise->fetchAll(PDO::FETCH_OBJ);
                         <div class="card-statistic-3 p-4">
                             <div class="card-icon card-icon-large">
                                 <!-- Icon -->
-                                <i class="fas fa-building-shield"></i>
+                                <i class="fas fa-boxes-stacked icon"></i>
                             </div>
                             <div class="mb-4">
                                 <!-- Main Heading -->
@@ -310,7 +332,7 @@ $franchiseRecord = $franchise->fetchAll(PDO::FETCH_OBJ);
     <!-- Agent And User Table Starts Here -->
     <div class="row">
         <!-- Customer Table -->
-        <div class="col-6">
+        <div class="col-xl-6 col-sm-12">
             <h3 class="text m-3 text-center">Customers</h3>
             <div class="col-xl-12 col-sm-12" style="overflow-x:auto;">
                 <table class="table desc-table text">
@@ -335,7 +357,11 @@ $franchiseRecord = $franchise->fetchAll(PDO::FETCH_OBJ);
                                 <td><?php echo $row->CustomerName; ?></td>
                                 <td><?php echo $row->CustomerEmail; ?></td>
                                 <td><?php echo $row->CustomerNumber; ?></td>
-                                <td><?php echo $row->CustomerCountryId; ?></td>
+                                <td><?php foreach ($countryRecord as $country) {
+                                        if ($row->CustomerCountryId == $country->CountryId) {
+                                            echo $country->CountryName;
+                                        }
+                                    } ?></td>
                             </tr>
                         <?php
                         }
@@ -343,12 +369,12 @@ $franchiseRecord = $franchise->fetchAll(PDO::FETCH_OBJ);
                     </tbody>
                 </table>
                 <a href="./customer.php">
-                    <button class="btn l-bg-cherry mt-3 w-100">View All Customers</button>
+                    <button class="btn l-bg-cherry mt-3 w-100">View, And Edit All Customers</button>
                 </a>
             </div>
         </div>
         <!-- Agent Table -->
-        <div class="col-6">
+        <div class="col-xl-6 col-sm-12">
             <h3 class="text m-3 text-center">Agents</h3>
             <div class="col-xl-12 col-sm-12" style="overflow-x:auto;">
                 <table class="table desc-table text">
@@ -372,7 +398,7 @@ $franchiseRecord = $franchise->fetchAll(PDO::FETCH_OBJ);
                                 <td><?php echo $row->AgentId; ?></td>
                                 <td><?php echo $row->AgentName; ?></td>
                                 <td><?php echo $row->AgentEmail; ?></td>
-                                <td><?php foreach ($franchiseRecord as $franchise) {
+                                <td><?php foreach ($agentFranchiseRecord as $franchise) {
                                         if ($franchise->FranchiseId == $row->AgentFranchiseId) {
                                             echo $franchise->FranchiseName;
                                         }
@@ -385,11 +411,99 @@ $franchiseRecord = $franchise->fetchAll(PDO::FETCH_OBJ);
                     </tbody>
                 </table>
                 <a href="./agent.php">
-                    <button class="btn l-bg-cherry mt-3 w-100">View All Agents</button>
+                    <button class="btn l-bg-cherry mt-3 w-100">View, Edit And Create New Agents</button>
                 </a>
             </div>
         </div>
     </div>
+    <!-- Agent And User Table Ends Here -->
+    <!-- Franchise Table Starts Here -->
+    <div class="row">
+        <h3 class="text-center m-3 text">Franchises</h3>
+        <!-- Analytics -->
+        <div class="col-xl-4 col-sm-12">
+            <div class="row">
+
+                <div class="col-xl-12 col-sm-12">
+                    <!-- Card Starts Here -->
+                    <div class="col-xl-12 col-lg-12">
+                        <div class="card l-bg-green-dark">
+                            <div class="card-statistic-3 p-4">
+                                <div class="card-icon card-icon-large">
+                                    <!-- Icon -->
+                                    <i class="fas fa-building icon"></i>
+                                </div>
+                                <div class="mb-4">
+                                    <!-- Main Heading -->
+                                    <h6 class="card-title mb-0">All Franchises</h6>
+                                </div>
+                                <div class="row align-items-center mb-2 d-flex">
+                                    <div class="col-8">
+                                        <h2 class="d-flex align-items-center mb-0">
+                                            <!-- Body Text -->
+                                            <?php echo $totalFranchiseCount ?>
+                                        </h2>
+                                    </div>
+                                </div>
+                                <!-- Progress Underline -->
+                                <div class="progress mt-1 " data-height="8" style="height: 8px;">
+                                    <div class="progress-bar l-bg-orange" role="progressbar" data-width="25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card Ends Here -->
+                </div>
+
+            </div>
+        </div>
+        <div class="col-xl-8 col-sm-12" style="overflow-x:auto;">
+            <table class="table desc-table text">
+                <!-- Table Head -->
+                <thead>
+                    <tr class="desc-tr">
+                        <th class="table-row-head desc-th">ID#</th>
+                        <th class="table-row-head desc-tr">Franchise Name</th>
+                        <th class="table-row-head desc-th">Franchise Code</th>
+                        <th class="table-row-head desc-th">Address</th>
+                        <th class="table-row-head desc-th">City</th>
+                        <th class="table-row-head desc-th">State</th>
+                        <th class="table-row-head desc-th">Country</th>
+                    </tr>
+                </thead>
+                <!-- Table Body -->
+                <tbody class="desc-tbody">
+                    <!-- Loop -->
+                    <?php
+                    foreach ($franchiseRecord as $row) {
+
+                    ?>
+                        <tr>
+                            <th><?php echo $row->FranchiseId ?></th>
+                            <th><?php echo $row->FranchiseName ?></th>
+                            <td><?php echo $row->FranchiseCode ?></td>
+                            <td><?php echo $row->FranchiseAddress ?></td>
+                            <td><?php echo $row->FranchiseCity ?></td>
+                            <td><?php echo $row->FranchiseState ?></td>
+                            <td><?php foreach ($countryRecord as $country) {
+                                    if ($row->FranchiseCountryId == $country->CountryId) {
+                                        echo $country->CountryName;
+                                    }
+                                } ?></td>
+                        </tr>
+                    <?php
+                    }
+                    ?>
+                </tbody>
+            </table>
+            <a href="./courier.php">
+                <button class="btn l-bg-cherry mt-3 w-100">View, Edit, And Create Franchises</button>
+            </a>
+        </div>
+
+
+    </div>
+    <!-- Franchise Table Ends Here -->
 
 </div>
 

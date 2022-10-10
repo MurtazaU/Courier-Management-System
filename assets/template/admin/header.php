@@ -30,12 +30,8 @@ if (!isset($_SESSION['admin-email'])) {
     <!-- Jquery JS Link -->
     <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 
-    <!-- AJAX Jquery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-
     <!-- Table CSS -->
     <link rel="stylesheet" href="../assets/CSS/adminCSS/table.css">
-
 
     <title>Admin</title>
 </head>
@@ -59,11 +55,6 @@ if (!isset($_SESSION['admin-email'])) {
         <div class="menu-bar">
             <div class="menu">
 
-                <li class="search-box">
-                    <i class='bx bx-search icon'></i>
-                    <input type="text" placeholder="Search...">
-                </li>
-
                 <ul class="menu-links">
                     <li class="nav-link">
                         <a href="./dashboard.php">
@@ -75,7 +66,7 @@ if (!isset($_SESSION['admin-email'])) {
                     <li class="nav-link">
                         <a href="./courier.php">
                             <i class="fa-solid fa-boxes-stacked icon"></i>
-                            <span class="text nav-text">View/Manage Couriers</span>
+                            <span class="text nav-text">Manage Couriers</span>
                         </a>
                     </li>
 
@@ -101,16 +92,30 @@ if (!isset($_SESSION['admin-email'])) {
                     </li>
 
                     <li class="nav-link">
-                        <a href="./new-agent.php">
-                            <i class='fa-solid fa-plus icon'></i>
-                            <span class="text nav-text">Create New Agent</span>
+                        <a href="./customer.php">
+                            <i class="fa-solid fa-users icon"></i>
+                            <span class="text nav-text">Manage Customer</span>
                         </a>
                     </li>
 
                     <li class="nav-link">
-                        <a href="./customer.php">
-                            <i class="fa-solid fa-users icon"></i>
-                            <span class="text nav-text">Manage Customer</span>
+                        <a href="./franchise.php">
+                            <i class="fa-solid fa-building icon"></i>
+                            <span class="text nav-text">Manage Franchise</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="./franchise.php">
+                            <i class="fa-solid fa-building icon"></i>
+                            <span class="text nav-text">Manage Countries</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="./franchise.php">
+                            <i class="fa-solid fa-building icon"></i>
+                            <span class="text nav-text">Manage Additives</span>
                         </a>
                     </li>
 
