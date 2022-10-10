@@ -369,7 +369,7 @@ $countryRecord = $country->fetchAll(PDO::FETCH_OBJ);
                     </tbody>
                 </table>
                 <a href="./customer.php">
-                    <button class="btn l-bg-cherry mt-3 w-100">View, And Edit All Customers</button>
+                    <button class="btn l-bg-cherry mt-3 w-100">View, And Edit All Customers OR Send SMS</button>
                 </a>
             </div>
         </div>

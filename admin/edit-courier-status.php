@@ -60,7 +60,7 @@ if (isset($_REQUEST['delivered'])) {
                     <div class="card-body">
                         <!-- Card Headings -->
                         <h5 class="card-title">Courier Id = <?php echo $courierId ?></h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Tracing Number: &nbsp; <?php echo $row->PackageCode ?></h6>
+                        <h6 class="card-subtitle mb-2 text-muted">Tracking Number: &nbsp; <?php echo $row->PackageCode ?></h6>
                         <h6 class="card-subtitle mb-2 text-muted">Courier's Current Status: &nbsp; <?php echo $row->PackageStatus ?></h6>
                         <!-- Card Button -->
                         <div class="card-text">

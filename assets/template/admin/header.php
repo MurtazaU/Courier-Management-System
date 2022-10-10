@@ -106,8 +106,8 @@ if (!isset($_SESSION['admin-email'])) {
                     </li>
 
                     <li class="nav-link">
-                        <a href="./franchise.php">
-                            <i class="fa-solid fa-building icon"></i>
+                        <a href="./country.php">
+                            <i class="fa-solid fa-earth-americas icon"></i>
                             <span class="text nav-text">Manage Countries</span>
                         </a>
                     </li>
