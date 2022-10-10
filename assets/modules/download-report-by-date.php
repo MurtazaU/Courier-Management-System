@@ -13,17 +13,38 @@ use PhpOffice\PhpSpreadsheet\Style\Fill;
 // Getting Value
 $value = $_POST['download-report-date-wise'];
 
+// Defaul Variables
+$count = 3;
+
+
 // Sender Email Id
 $customer = $con->prepare('select CustomerId, CustomerEmail from customer');
 $customer->execute();
 $customerRecord = $customer->fetchAll(PDO::FETCH_OBJ);
-$customerCount = $customer->rowCount();
 // Country Id
+$country = $con->prepare('select CountryId, CountryName from country');
+$country->execute();
+$countryRecord = $country->fetchAll(PDO::FETCH_OBJ);
 // Weight Class id
+$weight = $con->prepare('select WeightClassId, WeightClassName from weightclass');
+$weight->execute();
+$weightRecord = $weight->fetchAll(PDO::FETCH_OBJ);
 // Product Type Id
+$productType = $con->prepare('select ProductTypeId, ProductTypeName from producttype');
+$productType->execute();
+$productTypeRecord = $productType->fetchAll(PDO::FETCH_OBJ);
 // Agent Id
+$agent = $con->prepare('select AgentId, AgentEmail from agent');
+$agent->execute();
+$agentRecord = $agent->fetchAll(PDO::FETCH_OBJ);
 // Franchise Id
+$franchise = $con->prepare('select FranchiseId, FranchiseName from franchise');
+$franchise->execute();
+$franchiseRecord = $franchise->fetchAll(PDO::FETCH_OBJ);
 // Delivery Service Id
+$deliveryService = $con->prepare('select DeliveryServiceId, DeliveryServiceName from deliveryservice');
+$deliveryService->execute();
+$deliveryServiceRecord = $deliveryService->fetchAll(PDO::FETCH_OBJ);
 
 
 // Date Variables
@@ -112,33 +133,67 @@ $tableHead = [
 // Header Background Color
 $active_sheet->getStyle("A2:S2")->applyFromArray($tableHead);
 
-$count = 3;
 
 // Printing Data through loop
 foreach ($data as $row) {
     // Customer Loop
     foreach ($customerRecord as $customer) {
         if ($customer->CustomerId == $row->PackageSenderId) {
-            $customerEmailId = $customer->CustomerEmail;
+            $customerEmail = $customer->CustomerEmail;
         }
     }
     // Country Loop
+    foreach ($countryRecord as $country) {
+        if ($country->CountryId == $row->PackageReceiverCountry) {
+            $countryReceiver = $country->CountryName;
+        }
+    }
+    // Weight Loop
+    foreach ($weightRecord as $weight) {
+        if ($weight->WeightClassId == $row->PackageWeightId) {
+            $weightClass = $weight->WeightClassName;
+        }
+    }
+    // Product Type Loop
+    foreach ($productTypeRecord as $type) {
+        if ($type->ProductTypeId == $row->PackageProductTypeId) {
+            $productType = $type->ProductTypeName;
+        }
+    }
+    // Agent Loop
+    foreach ($agentRecord as $agent) {
+        if ($agent->AgentId == $row->PackageAgentId) {
+            $agentEmail = $agent->AgentEmail;
+        }
+    }
+    // Franchise Loop
+    foreach ($franchiseRecord as $franchise) {
+        if ($franchise->FranchiseId == $row->PackageFranchiseId) {
+            $franchiseName = $franchise->FranchiseName;
+        }
+    }
+    // Delivery Service Loop
+    foreach ($deliveryServiceRecord as $delivery) {
+        if ($delivery->DeliveryServiceId == $row->PackageDeliveryServiceId) {
+            $deliveryName = $delivery->DeliveryServiceName;
+        }
+    }
 
     $active_sheet->setCellValue('A' . $count, $row->PackageId);
-    $active_sheet->setCellValue('B' . $count, $customerEmailId);
+    $active_sheet->setCellValue('B' . $count, $customerEmail);
     $active_sheet->setCellValue('C' . $count, $row->PackageReceiverName);
     $active_sheet->setCellValue('D' . $count, $row->PackageReceiverNumber);
     $active_sheet->setCellValue('E' . $count, $row->PackageFromAddress);
     $active_sheet->setCellValue('F' . $count, $row->PackageToAddress);
     $active_sheet->setCellValue('G' . $count, $row->PackageReceiverZipCode);
     $active_sheet->setCellValue('H' . $count, $row->PackageReceiverCity);
-    $active_sheet->setCellValue('I' . $count, $row->PackageReceiverCountry);
+    $active_sheet->setCellValue('I' . $count, $countryReceiver);
     $active_sheet->setCellValue('J' . $count, $row->PackageCode);
-    $active_sheet->setCellValue('K' . $count, $row->PackageWeightId);
-    $active_sheet->setCellValue('L' . $count, $row->PackageProductTypeId);
-    $active_sheet->setCellValue('M' . $count, $row->PackageAgentId);
-    $active_sheet->setCellValue('N' . $count, $row->PackageFranchiseId);
-    $active_sheet->setCellValue('O' . $count, $row->PackageDeliveryServiceId);
+    $active_sheet->setCellValue('K' . $count, $weightClass);
+    $active_sheet->setCellValue('L' . $count, $productType);
+    $active_sheet->setCellValue('M' . $count, $agentEmail);
+    $active_sheet->setCellValue('N' . $count, $franchiseName);
+    $active_sheet->setCellValue('O' . $count, $deliveryName);
     $active_sheet->setCellValue('P' . $count, $row->PackageStatus);
     $active_sheet->setCellValue('Q' . $count, $row->PackageDateReceived);
     $active_sheet->setCellValue('R' . $count, $row->PackageDateDelivered);
