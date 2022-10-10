@@ -1,40 +1,45 @@
-<?php 
+<?php
 // Header
 include('../assets/template/admin/header.php');
 include('../assets/modules/dbconnection.php');
 
 // Sender Id
-$sender = $con -> prepare('select CustomerId, CustomerEmail from customer');
-$sender -> execute();
-$senderRecord = $sender -> fetchAll(PDO::FETCH_OBJ);
+$sender = $con->prepare('select CustomerId, CustomerEmail from customer');
+$sender->execute();
+$senderRecord = $sender->fetchAll(PDO::FETCH_OBJ);
 
 // Countries
-$country = $con -> prepare('select CountryId, CountryName from country');
-$country -> execute();
-$countryRecord = $country -> fetchAll(PDO::FETCH_OBJ);
+$country = $con->prepare('select CountryId, CountryName from country');
+$country->execute();
+$countryRecord = $country->fetchAll(PDO::FETCH_OBJ);
 
 // Weight Id
-$weight = $con -> prepare('select WeightClassId, WeightClassName, WeightClassFromLimit,WeightClassToLimit from weightclass');
-$weight -> execute();
-$weightRecord = $weight -> fetchAll(PDO::FETCH_OBJ);
+$weight = $con->prepare('select WeightClassId, WeightClassName, WeightClassFromLimit,WeightClassToLimit from weightclass');
+$weight->execute();
+$weightRecord = $weight->fetchAll(PDO::FETCH_OBJ);
 
 // Product Type
-$productType = $con -> prepare('select ProductTypeId, ProductTypeName from producttype');
-$productType -> execute();
-$productTypeRecord = $productType -> fetchAll(PDO::FETCH_OBJ);
+$productType = $con->prepare('select ProductTypeId, ProductTypeName from producttype');
+$productType->execute();
+$productTypeRecord = $productType->fetchAll(PDO::FETCH_OBJ);
 
 // Delivery Service
-$deliveryService = $con -> prepare('select DeliveryServiceId, DeliveryServiceName, DeliveryServiceTimeFrom, DeliveryServiceTimeTo from deliveryservice');
-$deliveryService -> execute();
-$deliveryServiceRecord = $deliveryService -> fetchAll(PDO::FETCH_OBJ);
+$deliveryService = $con->prepare('select DeliveryServiceId, DeliveryServiceName, DeliveryServiceTimeFrom, DeliveryServiceTimeTo from deliveryservice');
+$deliveryService->execute();
+$deliveryServiceRecord = $deliveryService->fetchAll(PDO::FETCH_OBJ);
 
 // Agent
-$agent = $con -> prepare('select AgentId, AgentEmail from agent');
-$agent -> execute();
-$agentRecord = $agent -> fetchAll(PDO::FETCH_OBJ);
+$agent = $con->prepare('select AgentId, AgentEmail from agent');
+$agent->execute();
+$agentRecord = $agent->fetchAll(PDO::FETCH_OBJ);
+
+// Franchise
+$franchise = $con->prepare('select FranchiseId, FranchiseName from franchise');
+$franchise->execute();
+$franchiseRecord = $franchise->fetchAll(PDO::FETCH_OBJ);
 
 // Inserting Data
-if(isset($_REQUEST['courier-submit'])){
+if (isset($_REQUEST['courier-submit'])) {
   $senderId = $_REQUEST['courier-sender-email'];
   $agentId = $_REQUEST['courier-agent-email'];
   $receiverName  = $_REQUEST['courier-receiver-name'];
@@ -46,30 +51,61 @@ if(isset($_REQUEST['courier-submit'])){
   $weightId  = $_REQUEST['courier-weight-id'];
   $type  = $_REQUEST['courier-type'];
   $deliveryService  = $_REQUEST['courier-delivery-service'];
-  $code = "Package" . rand(100, 999);
+  $code = "CR-" . rand(100, 99999);
   $date = date('Y-m-d');
   $status = "Received";
   $receiverNumber = $_REQUEST['courier-receiver-number'];
+  $franchiseId = $_REQUEST['courier-franchise-id'];
 
-  // Inserting Data
-  $sql = $con -> prepare('insert into package(PackageSenderId, PackageReceiverName, PackageReceiverNumber, PackageFromAddress, PackageToAddress, PackageReceiverZipCode, PackageReceiverCity, PackageReceiverCountry, PackageCode, PackageWeightId, PackageProductTypeId, PackageAgentId, PackageDeliveryServiceId, PackageStatus, PackageDateReceived) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)');
-  $sql -> bindParam(1, $senderId);
-  $sql -> bindParam(2, $receiverName);
-  $sql -> bindParam(3, $receiverNumber);
-  $sql -> bindParam(4, $senderAddress);
-  $sql -> bindParam(5, $receiverAddress);
-  $sql -> bindParam(6, $receiverZipCode);
-  $sql -> bindParam(7, $receiverCity);
-  $sql -> bindParam(8, $receiverCountry);
-  $sql -> bindParam(9, $code);
-  $sql -> bindParam(10, $weightId);
-  $sql -> bindParam(11, $type);
-  $sql -> bindParam(12,$agentId);
-  $sql -> bindParam(13,$deliveryService);
-  $sql -> bindParam(14,$status);
-  $sql -> bindParam(15,$date);
+  $codeQuery = $con->prepare('select PackageCode from package where PackageCode = ?');
+  $codeQuery->bindParam(1, $code);
+  $codeQuery->execute();
+  $codeCount = $codeQuery->rowCount();
 
-  $sql->execute();
+  if ($codeCount > 0) {
+    $newCode = "CR-" . rand(100, 99999);
+    // Inserting Data
+    $sql = $con->prepare('insert into package(PackageSenderId, PackageReceiverName, PackageReceiverNumber, PackageFromAddress, PackageToAddress, PackageReceiverZipCode, PackageReceiverCity, PackageReceiverCountry, PackageCode, PackageWeightId, PackageProductTypeId, PackageAgentId, PackageFranchiseId, PackageDeliveryServiceId, PackageStatus, PackageDateReceived) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)');
+    $sql->bindParam(1, $senderId);
+    $sql->bindParam(2, $receiverName);
+    $sql->bindParam(3, $receiverNumber);
+    $sql->bindParam(4, $senderAddress);
+    $sql->bindParam(5, $receiverAddress);
+    $sql->bindParam(6, $receiverZipCode);
+    $sql->bindParam(7, $receiverCity);
+    $sql->bindParam(8, $receiverCountry);
+    $sql->bindParam(9, $newCode);
+    $sql->bindParam(10, $weightId);
+    $sql->bindParam(11, $type);
+    $sql->bindParam(12, $agentId);
+    $sql->bindParam(13, $franchiseId);
+    $sql->bindParam(14, $deliveryService);
+    $sql->bindParam(15, $status);
+    $sql->bindParam(16, $date);
+
+    $sql->execute();
+  } else {
+    // Inserting Data
+    $sql = $con->prepare('insert into package(PackageSenderId, PackageReceiverName, PackageReceiverNumber, PackageFromAddress, PackageToAddress, PackageReceiverZipCode, PackageReceiverCity, PackageReceiverCountry, PackageCode, PackageWeightId, PackageProductTypeId, PackageAgentId, PackageFranchiseId, PackageDeliveryServiceId, PackageStatus, PackageDateReceived) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)');
+    $sql->bindParam(1, $senderId);
+    $sql->bindParam(2, $receiverName);
+    $sql->bindParam(3, $receiverNumber);
+    $sql->bindParam(4, $senderAddress);
+    $sql->bindParam(5, $receiverAddress);
+    $sql->bindParam(6, $receiverZipCode);
+    $sql->bindParam(7, $receiverCity);
+    $sql->bindParam(8, $receiverCountry);
+    $sql->bindParam(9, $code);
+    $sql->bindParam(10, $weightId);
+    $sql->bindParam(11, $type);
+    $sql->bindParam(12, $agentId);
+    $sql->bindParam(13, $franchiseId);
+    $sql->bindParam(14, $deliveryService);
+    $sql->bindParam(15, $status);
+    $sql->bindParam(16, $date);
+
+    $sql->execute();
+  }
 }
 
 ?>
@@ -82,7 +118,7 @@ if(isset($_REQUEST['courier-submit'])){
 <div class="container my-5">
   <div class="card mx-lg-5 p-lg-5">
     <!-- Form -->
-    <form method="POST" >
+    <form method="POST">
       <!-- Card header -->
       <div class="card-header py-4 px-5 bg-light border-0">
         <h4 class="mb-0 fw-bold">Create A New Courier</h4>
@@ -99,48 +135,40 @@ if(isset($_REQUEST['courier-submit'])){
 
           <div class="col-md-8">
             <div class="mb-3">
-              <label class="form-label" for="courier-sender-email"
-                    >Courier Sender Email</label
-                >
-                <select name="courier-sender-email" class="search-select form-select" id="courier-sender-email" >
-                  <option selected disabled></option>
-                  <?php 
-                  foreach($senderRecord as $row){
-                    ?>
-                    <option value="<?php echo $row->CustomerId ?>"><?php echo $row->CustomerEmail ?></option>
-                    <?php
-                  }
-                  ?>
-                </select>
+              <label class="form-label" for="courier-sender-email">Courier Sender Email</label>
+              <select name="courier-sender-email" class="search-select form-select" id="courier-sender-email" required>
+                <option selected disabled></option>
+                <?php
+                foreach ($senderRecord as $row) {
+                ?>
+                  <option value="<?php echo $row->CustomerId ?>"><?php echo $row->CustomerEmail ?></option>
+                <?php
+                }
+                ?>
+              </select>
             </div>
 
             <div class="mb-3">
-              <label for="courier-agent-email" class="form-label"
-                    >Agent Email</label
-                >
-               <select name="courier-agent-email" id=" courier-agent-email" class=" search-select form-select" >
-                  <option selected disabled></option>
-                  <?php 
-                  foreach($agentRecord as $row){
-                    ?>
-                    <option value="<?php echo $row->AgentId ?>"><?php echo $row->AgentEmail ?></option>
-                    <?php
-                  }
-                  ?>
-                </select>
+              <label for="courier-agent-email" class="form-label">Agent Email</label>
+              <select name="courier-agent-email" id=" courier-agent-email" class=" search-select form-select" required>
+                <option selected disabled></option>
+                <?php
+                foreach ($agentRecord as $row) {
+                ?>
+                  <option value="<?php echo $row->AgentId ?>"><?php echo $row->AgentEmail ?></option>
+                <?php
+                }
+                ?>
+              </select>
             </div>
 
             <div class="mb-3">
-              <label for="courier-receiver-name" class="form-label"
-                    >Courier Receiver Name</label
-                >
-              <input type="text" name="courier-receiver-name" class="form-control" id="courier-receiver-name"/>
+              <label for="courier-receiver-name" class="form-label">Courier Receiver Name</label>
+              <input type="text" name="courier-receiver-name" class="form-control" id="courier-receiver-name" required />
             </div>
             <div class="mb-3">
-              <label for="courier-receiver-number" class="form-label"
-                    >Courier Receiver Number</label
-                >
-              <input type="number" name="courier-receiver-number" class="form-control" id="courier-receiver-number"/>
+              <label for="courier-receiver-number" class="form-label">Courier Receiver Number</label>
+              <input type="number" name="courier-receiver-number" class="form-control" id="courier-receiver-number" required />
               <p class="text-muted">Kindly write the receiver's number containing your country code</p>
             </div>
           </div>
@@ -159,59 +187,40 @@ if(isset($_REQUEST['courier-submit'])){
               <div class="col-md-6">
                 <div class="mb-3">
                   <label for="courier-sender-address" class="form-label">Courier Sender Address</label>
-                  <input
-                         type="text"
-                         class="form-control"
-                         id="courier-sender-address"
-                         name="courier-sender-address"
-                         />
+                  <input type="text" class="form-control" id="courier-sender-address" name="courier-sender-address" required />
                 </div>
               </div>
 
               <div class="col-md-6">
-                <label for="courier-receiver-address" class="form-label"
-                       >Courier Receiver Address</label
-                  >
-                  <input
-                        type="text"
-                        class="form-control"
-                        id="courier-receiver-address"
-                        name="courier-receiver-address"
-                        />
-                </div>
-                <div class="col-md-12 mb-3">
-                <label for="courier-receiver-zip-code" class="form-label"
-                       >Courier Receiver's Zip Code</label
-                  >
-                  <input
-                        type="text"
-                        class="form-control"
-                        id="courier-receiver-zip-code"
-                        name="courier-receiver-zip-code"
-                        />
-                </div>
-                <div class="row">
+                <label for="courier-receiver-address" class="form-label">Courier Receiver Address</label>
+                <input type="text" class="form-control" id="courier-receiver-address" name="courier-receiver-address" required />
+              </div>
+              <div class="col-md-12 mb-3">
+                <label for="courier-receiver-zip-code" class="form-label">Courier Receiver's Zip Code</label>
+                <input type="text" class="form-control" id="courier-receiver-zip-code" name="courier-receiver-zip-code" required />
+              </div>
+              <div class="row">
                 <div class="col-md-6 mb-3">
                   <label for="courier-receiver-city" class="form-label">Courier Receiver's City</label>
-                  <input type="text" class="form-control" id="courier-receiver-city" name="courier-receiver-city">
+                  <input type="text" class="form-control" id="courier-receiver-city" name="courier-receiver-city" required />
                 </div>
                 <div class="col-md-6">
                   <label for="courier-receiver-country" class="form-label">Courier Receiver's Country</label>
-                  <select name="courier-receiver-country" id="courier-receiver-country" class="search-select form-select">
+                  <select name="courier-receiver-country" id="courier-receiver-country" class="search-select form-select" required>
                     <option selected disabled></option>
-                    <?php foreach($countryRecord as $row){
-                      ?>
-                        <option value="<?php echo $row->CountryId ?>"><?php echo $row->CountryName ?></option>
-                      <?php
+                    <?php foreach ($countryRecord as $row) {
+                    ?>
+                      <option value="<?php echo $row->CountryId ?>"><?php echo $row->CountryName ?></option>
+                    <?php
                     }
                     ?>
                   </select>
                 </div>
-                </div>
-                
               </div>
+
             </div>
           </div>
+        </div>
 
         <hr class="my-5" />
 
@@ -223,67 +232,78 @@ if(isset($_REQUEST['courier-submit'])){
 
           <div class="col-md-8">
             <div class="mb-3">
-              <label for="courier-weight-id" class="form-label"
-                    >Courier Weight Class</label
-                >
-                <select name="courier-weight-id" id="courier-weight-id" class="search-select form-select">
-                  <option disabled selected></option>
-                  <?php 
-                  foreach($weightRecord as $row){
-                    ?> 
-                    <option value="<?php echo $row->WeightClassId ?>"><?php echo $row->WeightClassName ?></option>
-                    <?php
-                  }
-                  ?>
-                </select>
-                <!-- Limits -->
-                <div>
-                  <?php 
-                  foreach($weightRecord as $row){
-                    ?>
-                    <p class="text-muted"><?php echo $row->WeightClassName ?>: <?php echo $row->WeightClassFromLimit ?> - <?php echo $row->WeightClassToLimit ?></p>
-                    <?php 
-                  }
-                  ?>
-                </div>
+              <label for="courier-franchise-id" class="form-label">Courier Franchise</label>
+              <select name="courier-franchise-id" id="courier-franchise-id" class="search-select form-select" required>
+                <option disabled selected></option>
+                <?php
+                foreach ($franchiseRecord as $row) {
+                ?>
+                  <option value="<?php echo $row->FranchiseId ?>"><?php echo $row->FranchiseName ?></option>
+                <?php
+                }
+                ?>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="courier-weight-id" class="form-label">Courier Weight Class</label>
+              <select name="courier-weight-id" id="courier-weight-id" class="search-select form-select" required>
+                <option disabled selected></option>
+                <?php
+                foreach ($weightRecord as $row) {
+                ?>
+                  <option value="<?php echo $row->WeightClassId ?>"><?php echo $row->WeightClassName ?></option>
+                <?php
+                }
+                ?>
+              </select>
+              <!-- Limits -->
+              <div>
+                <?php
+                foreach ($weightRecord as $row) {
+                ?>
+                  <p class="text-muted"><?php echo $row->WeightClassName ?>: <?php echo $row->WeightClassFromLimit ?> - <?php echo $row->WeightClassToLimit ?></p>
+                <?php
+                }
+                ?>
+              </div>
             </div>
 
             <div class="row">
               <div class="col-md-6">
                 <div class="mb-3">
                   <label for="courier-type" class="form-label">Courier Type</label>
-                  <select name="courier-type" id="courier-type" class="search-select form-select">
+                  <select name="courier-type" id="courier-type" class="search-select form-select" required>
                     <option disabled selected></option>
-                    <?php 
-                    foreach($productTypeRecord as $row){
-                      ?>
+                    <?php
+                    foreach ($productTypeRecord as $row) {
+                    ?>
                       <option value="<?php echo $row->ProductTypeId ?>"><?php echo $row->ProductTypeName ?></option>
-                      <?php
+                    <?php
                     }
                     ?>
                   </select>
+                </div>
               </div>
-                  </div>
 
               <div class="col-md-6">
                 <label for="courier-delivery-service" class="form-label">Courier Delivery Service</label>
-                <select name="courier-delivery-service" id="courier-delivery-service" class="search-select form-select">
-                    <option disabled selected></option>
-                    <?php 
-                    foreach($deliveryServiceRecord as $row){
-                      ?>
-                      <option value="<?php echo $row->DeliveryServiceId ?>"><?php echo $row->DeliveryServiceName ?></option>
-                      <?php
-                    }
-                    ?>
-                  </select>
-                  <!-- Limits -->
+                <select name="courier-delivery-service" id="courier-delivery-service" class="search-select form-select" required>
+                  <option disabled selected></option>
+                  <?php
+                  foreach ($deliveryServiceRecord as $row) {
+                  ?>
+                    <option value="<?php echo $row->DeliveryServiceId ?>"><?php echo $row->DeliveryServiceName ?></option>
+                  <?php
+                  }
+                  ?>
+                </select>
+                <!-- Limits -->
                 <div>
-                  <?php 
-                  foreach($deliveryServiceRecord as $row){
-                    ?>
+                  <?php
+                  foreach ($deliveryServiceRecord as $row) {
+                  ?>
                     <p class="text-muted"><?php echo $row->DeliveryServiceName ?>: <?php echo $row->DeliveryServiceTimeFrom ?> - <?php echo $row->DeliveryServiceTimeTo ?></p>
-                    <?php 
+                  <?php
                   }
                   ?>
                 </div>
@@ -308,11 +328,11 @@ if(isset($_REQUEST['courier-submit'])){
 <!-- Select 2 JS -->
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script>
-$(document).ready(function() {
+  $(document).ready(function() {
     $('.search-select').select2();
-});
+  });
 </script>
-<?php 
+<?php
 // Footer
 include('../assets/template/admin/footer.php');
 ?>

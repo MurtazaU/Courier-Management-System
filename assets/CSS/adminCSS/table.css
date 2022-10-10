@@ -9,6 +9,11 @@
   border: 1px solid rgba(255, 255, 255, 0.18);
   font-size: 12px !important;
 }
+.desc-tbody{
+  overflow-x:auto;
+}
+.desc-th{
+}
 
 /* Status Table */
 .status-table{
@@ -19,14 +24,15 @@
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   font-size: 12px !important;
+  
 }
 .status-text{
   padding: 3px;
   text-align: center;
 }
-/* Orange */
-.status-orange{
-  background-color: #f46711;
+/* Primary */
+.status-primary{
+  background-color: #11d2f4;
   border-radius: 20px;
 }
 /* Red */

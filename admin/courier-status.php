@@ -41,7 +41,7 @@ $packageRecord = $package->fetchAll(PDO::FETCH_OBJ);
                                         // Received
                                         if ($row->PackageStatus == "Received") {
                                         ?>
-                                            <div class="status-orange ">Received</div>
+                                            <div class="status-primary ">Received</div>
                                         <?php
                                         }
                                         // UnderWay
