@@ -38,7 +38,7 @@ $courierCustomer->execute();
 $courierCustomerRecord = $courierCustomer->fetchAll(PDO::FETCH_OBJ);
 
 // Received Courier
-$received = "Received";
+$received = "Registered";
 $receivedCourier = $con->prepare('select PackageId from package where PackageStatus = ?');
 $receivedCourier->bindParam(1, $received);
 $receivedCourier->execute();
@@ -52,9 +52,9 @@ $inProgressCourier->execute();
 $inProgressCourierCount = $inProgressCourier->rowCount();
 
 // Delivered Courier
-$delivered = "Received";
+$delivered = "Delivered";
 $deliveredCourier = $con->prepare('select PackageId from package where PackageStatus = ?');
-$deliveredCourier->bindParam(1, $received);
+$deliveredCourier->bindParam(1, $delivered);
 $deliveredCourier->execute();
 $deliveredCourierCount = $deliveredCourier->rowCount();
 
@@ -75,7 +75,7 @@ $agentFranchiseRecord = $agentFranchise->fetchAll(PDO::FETCH_OBJ);
 $totalFranchiseCount = $agentFranchise->rowCount();
 
 // Franchise
-$franchise = $con->prepare('select FranchiseId, FranchiseName, FranchiseCode, FranchiseAddress, FranchiseCity, FranchiseState, FranchiseCountryId from franchise ORDER BY RAND()');
+$franchise = $con->prepare('select FranchiseId, FranchiseName, FranchiseCode, FranchiseAddress, FranchiseCity, FranchiseState, FranchiseCountryId from franchise ORDER BY RAND() Limit 6');
 $franchise->execute();
 $franchiseRecord = $franchise->fetchAll(PDO::FETCH_OBJ);
 

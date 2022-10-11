@@ -124,6 +124,7 @@ if (isset($_REQUEST['log-submit'])) {
           }
           ?>
           <p>Log In As An Admin? <a href="../../admin/login.php">Click Here</a></p>
+          <p class="mt-3">Log In As An Agent? <a href="../../agent/login.php">Click Here</a></p>
 
         </form>
         <!-- Sign In Form Ends Here -->
