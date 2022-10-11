@@ -60,7 +60,7 @@ if (isset($_REQUEST['courier-submit'])) {
     $weightId  = $_REQUEST['courier-weight-id'];
     $type  = $_REQUEST['courier-type'];
     $deliveryService  = $_REQUEST['courier-delivery-service'];
-    $code = "CR-" . rand(100, 99999);
+    $code = "CR-" . rand(10000, 99999);
     $date = date('Y-m-d');
     $status = "Registered";
     $receiverNumber = $_REQUEST['courier-receiver-number'];

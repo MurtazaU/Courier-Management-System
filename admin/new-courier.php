@@ -69,7 +69,7 @@ if (isset($_REQUEST['courier-submit'])) {
   $codeCount = $codeQuery->rowCount();
 
   if ($codeCount > 0) {
-    $newCode = "CR-" . rand(100, 99999);
+    $newCode = "CR-" . rand(10000, 99999);
     // Inserting Data
     $sql = $con->prepare('insert into package(PackageSenderId, PackageReceiverName, PackageReceiverNumber, PackageFromAddress, PackageToAddress, PackageReceiverZipCode, PackageReceiverCity, PackageReceiverCountry, PackageCode, PackageWeightId, PackageProductTypeId, PackageAgentId, PackageFranchiseId, PackageDeliveryServiceId, PackageStatus, PackageDateReceived, PackageRegistrationCity) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)');
     $sql->bindParam(1, $senderId);
