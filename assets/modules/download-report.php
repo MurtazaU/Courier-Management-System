@@ -89,7 +89,7 @@ if ($value == 5) {
 // All Cities
 if ($city == 1) {
     if ($value == 1) {
-        $sql = $con->prepare('select * from package where PackageDateReceived >= ?');
+        $sql = $con->prepare('select * from package where PackageDateReceived = ?');
         $sql->bindParam(1, $today);
         $sql->execute();
     }

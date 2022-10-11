@@ -134,7 +134,7 @@ $franchiseRecord = $franchise->fetchAll(PDO::FETCH_OBJ);
         <div class="row m-5 mt-0">
             <div class="col-12">
                 <!-- Download Repor Form -->
-                <form method="POST" action="../assets/modules/agent-download-report-by-date.php">
+                <form method="POST" action="../assets/modules/agent-download-report.php">
                     <div class="row mt-4">
                         <div class="col-4">
                             <!-- Select -->
@@ -149,11 +149,16 @@ $franchiseRecord = $franchise->fetchAll(PDO::FETCH_OBJ);
                         </div>
                         <div class="col-4">
                             <!-- Select -->
-                            <h4 class="text text-center">Select Franchise</h4>
-                            <select disabled name="download-report-city-wise" id="ReportCityWise" class="form-select" required>
-                                <option selected value="<?php echo $_SESSION['agent-franchise-id'] ?>"><?php foreach ($franchiseRecord as $franchise) {
-                                                                                                            echo $franchise->FranchiseName;
-                                                                                                        } ?></option>
+                            <h4 class="text text-center">Franchise</h4>
+                            <select name="download-report-city-wise" id="ReportCityWise" class="form-select" required>
+                                <?php foreach ($franchiseRecord as $franchise) {
+                                    if ($franchise->FranchiseId == $_SESSION['agent-franchise-id']) {
+                                ?>
+                                        <option selected value="<?php echo $franchise->FranchiseId ?>">
+                                    <?php
+                                        echo $franchise->FranchiseName;
+                                    }
+                                } ?></option>
                             </select>
                         </div>
                         <div class="col-4">

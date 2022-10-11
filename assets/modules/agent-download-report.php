@@ -56,25 +56,25 @@ $days30 = date('Y-m-d', strtotime('-30 days'));
 
 // Conditions
 if ($value == 1) {
-    $sql = $con->prepare('select * from package where PackageDateReceived >= ? && PackageRegistrationCity = ? ');
+    $sql = $con->prepare('select * from package where PackageDateReceived = ? && PackageFranchiseId = ? ');
     $sql->bindParam(1, $today);
     $sql->bindParam(2, $city);
     $sql->execute();
 }
 if ($value == 2) {
-    $sql = $con->prepare('select * from package where PackageDateReceived >=  ?  && PackageRegistrationCity = ?');
+    $sql = $con->prepare('select * from package where PackageDateReceived >=  ?  && PackageFranchiseId = ?');
     $sql->bindParam(1, $days7);
     $sql->bindParam(2, $city);
     $sql->execute();
 }
 if ($value == 3) {
-    $sql = $con->prepare('select * from package where PackageDateReceived >=  ? && PackageRegistrationCity = ? ');
+    $sql = $con->prepare('select * from package where PackageDateReceived >=  ? && PackageFranchiseId = ? ');
     $sql->bindParam(1, $days14);
     $sql->bindParam(2, $city);
     $sql->execute();
 }
 if ($value == 4) {
-    $sql = $con->prepare('select * from package where PackageDateReceived >=  ? && PackageRegistrationCity = ? ');
+    $sql = $con->prepare('select * from package where PackageDateReceived >=  ? && PackageFranchiseId = ? ');
     $sql->bindParam(1, $days30);
     $sql->bindParam(2, $city);
     $sql->execute();
@@ -82,38 +82,10 @@ if ($value == 4) {
 
 // All Time
 if ($value == 5) {
-    $sql = $con->prepare('select * from package where PackageRegistrationCity = ? ');
+    $sql = $con->prepare('select * from package where PackageFranchiseId = ? ');
     $sql->bindParam(1, $city);
     $sql->execute();
 }
-// All Cities
-if ($city == 1) {
-    if ($value == 1) {
-        $sql = $con->prepare('select * from package where PackageDateReceived >= ?');
-        $sql->bindParam(1, $today);
-        $sql->execute();
-    }
-    if ($value == 2) {
-        $sql = $con->prepare('select * from package where PackageDateReceived >= ?');
-        $sql->bindParam(1, $days7);
-        $sql->execute();
-    }
-    if ($value == 3) {
-        $sql = $con->prepare('select * from package where PackageDateReceived >= ?');
-        $sql->bindParam(1, $days14);
-        $sql->execute();
-    }
-    if ($value == 4) {
-        $sql = $con->prepare('select * from package where PackageDateReceived >= ?');
-        $sql->bindParam(1, $days30);
-        $sql->execute();
-    }
-    if ($value == 5) {
-        $sql = $con->prepare('select * from package');
-        $sql->execute();
-    }
-}
-
 
 
 $data = $sql->fetchAll(PDO::FETCH_OBJ);

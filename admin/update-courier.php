@@ -115,7 +115,7 @@ if (isset($_REQUEST['courier-submit'])) {
             <div class="col-md-8">
               <div class="mb-3">
                 <label class="form-label" for="courier-sender-email">Courier Sender Email</label>
-                <select name="courier-sender-email" class="search-select form-select" id="courier-sender-email">
+                <select name="courier-sender-email" class="search-select form-select" id="courier-sender-email" required>
                   <?php
                   foreach ($senderRecord as $row) {
                     if ($row->CustomerId == $data->PackageSenderId) {
@@ -136,7 +136,7 @@ if (isset($_REQUEST['courier-submit'])) {
 
               <div class="mb-3">
                 <label for="courier-agent-email" class="form-label">Agent Email</label>
-                <select name="courier-agent-email" id=" courier-agent-email" class=" search-select form-select">
+                <select name="courier-agent-email" id=" courier-agent-email" class=" search-select form-select" required>
                   <?php
                   foreach ($agentRecord as $row) {
                     if ($row->AgentId == $data->PackageAgentId) {
@@ -155,11 +155,11 @@ if (isset($_REQUEST['courier-submit'])) {
 
               <div class="mb-3">
                 <label for="courier-receiver-name" class="form-label">Courier Receiver Name</label>
-                <input type="text" value="<?php echo $data->PackageReceiverName ?>" name="courier-receiver-name" class="form-control" id="courier-receiver-name" />
+                <input type="text" value="<?php echo $data->PackageReceiverName ?>" name="courier-receiver-name" class="form-control" id="courier-receiver-name" required />
               </div>
               <div class="mb-3">
                 <label for="courier-receiver-number" class="form-label">Courier Receiver Number</label>
-                <input type="number" value="<?php echo $data->PackageReceiverNumber ?>" name="courier-receiver-number" class="form-control" id="courier-receiver-number" />
+                <input type="number" value="<?php echo $data->PackageReceiverNumber ?>" name="courier-receiver-number" class="form-control" id="courier-receiver-number" required />
                 <p class="text-muted">Kindly write the receiver's number containing your country code</p>
               </div>
             </div>
@@ -178,26 +178,26 @@ if (isset($_REQUEST['courier-submit'])) {
                 <div class="col-md-6">
                   <div class="mb-3">
                     <label for="courier-sender-address" class="form-label">Courier Sender Address</label>
-                    <input type="text" class="form-control" id="courier-sender-address" name="courier-sender-address" value="<?php echo $data->PackageFromAddress ?>" />
+                    <input type="text" class="form-control" id="courier-sender-address" name="courier-sender-address" value="<?php echo $data->PackageFromAddress ?>" required />
                   </div>
                 </div>
 
                 <div class="col-md-6">
                   <label for="courier-receiver-address" class="form-label">Courier Receiver Address</label>
-                  <input type="text" class="form-control" id="courier-receiver-address" name="courier-receiver-address" value="<?php echo $data->PackageToAddress ?>" />
+                  <input type="text" class="form-control" id="courier-receiver-address" name="courier-receiver-address" value="<?php echo $data->PackageToAddress ?>" required />
                 </div>
                 <div class="col-md-12 mb-3">
                   <label for="courier-receiver-zip-code" class="form-label">Courier Receiver's Zip Code</label>
-                  <input type="text" class="form-control" id="courier-receiver-zip-code" name="courier-receiver-zip-code" value="<?php echo $data->PackageReceiverZipCode ?>" />
+                  <input type="text" class="form-control" id="courier-receiver-zip-code" name="courier-receiver-zip-code" value="<?php echo $data->PackageReceiverZipCode ?>" required />
                 </div>
                 <div class="row">
                   <div class="col-md-6 mb-3">
                     <label for="courier-receiver-city" class="form-label">Courier Receiver's City</label>
-                    <input type="text" class="form-control" id="courier-receiver-city" value="<?php echo $data->PackageReceiverCity ?>" name="courier-receiver-city">
+                    <input type="text" class="form-control" id="courier-receiver-city" value="<?php echo $data->PackageReceiverCity ?>" name="courier-receiver-city" required />
                   </div>
                   <div class="col-md-6">
                     <label for="courier-receiver-country" class="form-label">Courier Receiver's Country</label>
-                    <select name="courier-receiver-country" id="courier-receiver-country" class="search-select form-select">
+                    <select name="courier-receiver-country" id="courier-receiver-country" class="search-select form-select" required>
                       <?php foreach ($countryRecord as $row) {
                         if ($row->CountryId == $data->PackageReceiverCountry) {
                       ?>
@@ -229,7 +229,7 @@ if (isset($_REQUEST['courier-submit'])) {
             <div class="col-md-8">
               <div class="mb-3">
                 <label for="courier-weight-id" class="form-label">Courier Weight Class</label>
-                <select name="courier-weight-id" id="courier-weight-id" class="search-select form-select">
+                <select name="courier-weight-id" id="courier-weight-id" class="search-select form-select" required>
                   <?php
                   foreach ($weightRecord as $row) {
                     if ($row->WeightClassId == $data->PackageWeightId) {
@@ -260,7 +260,7 @@ if (isset($_REQUEST['courier-submit'])) {
                 <div class="col-md-6">
                   <div class="mb-3">
                     <label for="courier-type" class="form-label">Courier Type</label>
-                    <select name="courier-type" id="courier-type" class="search-select form-select">
+                    <select name="courier-type" id="courier-type" class="search-select form-select" required>
                       <?php
                       foreach ($productTypeRecord as $row) {
                         if ($row->ProductTypeId == $data->PackageProductTypeId) {
@@ -280,7 +280,7 @@ if (isset($_REQUEST['courier-submit'])) {
 
                 <div class="col-md-6">
                   <label for="courier-delivery-service" class="form-label">Courier Delivery Service</label>
-                  <select name="courier-delivery-service" id="courier-delivery-service" class="search-select form-select">
+                  <select name="courier-delivery-service" id="courier-delivery-service" class="search-select form-select" required>
                     <?php
                     foreach ($deliveryServiceRecord as $row) {
                       if ($row->DeliveryServiceId == $data->PackageDeliveryServiceId) {
