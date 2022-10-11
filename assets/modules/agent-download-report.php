@@ -11,7 +11,8 @@ use PhpOffice\PhpSpreadsheet\Style\Alignment;
 use PhpOffice\PhpSpreadsheet\Style\Fill;
 
 // Getting Value
-$value = $_POST['download-report-city-wise'];
+$value = $_POST['download-report-date-wise'];
+$city = $_POST['download-report-city-wise'];
 
 // Defaul Variables
 $count = 3;
@@ -47,9 +48,74 @@ $deliveryService->execute();
 $deliveryServiceRecord = $deliveryService->fetchAll(PDO::FETCH_OBJ);
 
 
-$sql = $con->prepare('select * from package where PackageRegistrationCity = ?');
-$sql->bindParam(1, $value);
-$sql->execute();
+// Date Variables
+$today = date('Y-m-d');
+$days7 = date('Y-m-d', strtotime('-7 days'));
+$days14 = date('Y-m-d', strtotime('-14 days'));
+$days30 = date('Y-m-d', strtotime('-30 days'));
+
+// Conditions
+if ($value == 1) {
+    $sql = $con->prepare('select * from package where PackageDateReceived >= ? && PackageRegistrationCity = ? ');
+    $sql->bindParam(1, $today);
+    $sql->bindParam(2, $city);
+    $sql->execute();
+}
+if ($value == 2) {
+    $sql = $con->prepare('select * from package where PackageDateReceived >=  ?  && PackageRegistrationCity = ?');
+    $sql->bindParam(1, $days7);
+    $sql->bindParam(2, $city);
+    $sql->execute();
+}
+if ($value == 3) {
+    $sql = $con->prepare('select * from package where PackageDateReceived >=  ? && PackageRegistrationCity = ? ');
+    $sql->bindParam(1, $days14);
+    $sql->bindParam(2, $city);
+    $sql->execute();
+}
+if ($value == 4) {
+    $sql = $con->prepare('select * from package where PackageDateReceived >=  ? && PackageRegistrationCity = ? ');
+    $sql->bindParam(1, $days30);
+    $sql->bindParam(2, $city);
+    $sql->execute();
+}
+
+// All Time
+if ($value == 5) {
+    $sql = $con->prepare('select * from package where PackageRegistrationCity = ? ');
+    $sql->bindParam(1, $city);
+    $sql->execute();
+}
+// All Cities
+if ($city == 1) {
+    if ($value == 1) {
+        $sql = $con->prepare('select * from package where PackageDateReceived >= ?');
+        $sql->bindParam(1, $today);
+        $sql->execute();
+    }
+    if ($value == 2) {
+        $sql = $con->prepare('select * from package where PackageDateReceived >= ?');
+        $sql->bindParam(1, $days7);
+        $sql->execute();
+    }
+    if ($value == 3) {
+        $sql = $con->prepare('select * from package where PackageDateReceived >= ?');
+        $sql->bindParam(1, $days14);
+        $sql->execute();
+    }
+    if ($value == 4) {
+        $sql = $con->prepare('select * from package where PackageDateReceived >= ?');
+        $sql->bindParam(1, $days30);
+        $sql->execute();
+    }
+    if ($value == 5) {
+        $sql = $con->prepare('select * from package');
+        $sql->execute();
+    }
+}
+
+
+
 $data = $sql->fetchAll(PDO::FETCH_OBJ);
 
 // Create Class

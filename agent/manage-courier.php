@@ -1,23 +1,24 @@
 <?php
 // Header
-include('../assets/template/admin/header.php');
+include('../assets/template/agent/header.php');
 // DB Connection
 include('../assets/modules/dbconnection.php');
 
 // New Couriers Analytics
 $date = date("Y-m-d");
-$newCouriers = $con->prepare('select * from package where PackageDateReceived = ?');
+$newCouriers = $con->prepare('select * from package where PackageDateReceived = ? && PackageFranchiseId = ?');
 $newCouriers->bindParam(1, $date);
+$newCouriers->bindParam(2, $_SESSION['agent-franchise-id']);
 $newCouriers->execute();
 $newCouriersCount = $newCouriers->rowCount();
 
 // All Couriers Details
-$couriers = $con->prepare('select * from package');
+$couriers = $con->prepare('select * from package where PackageFranchiseId = ?');
+$couriers->bindParam(1, $_SESSION['agent-franchise-id']);
 $couriers->execute();
 // Total Courier Count
 $totalCouriersCount = $couriers->rowCount();
 $couriersRecord = $couriers->fetchAll(PDO::FETCH_OBJ);
-
 
 // Sender Id
 $sender = $con->prepare('select CustomerId, CustomerEmail from customer');
@@ -34,20 +35,17 @@ $productType = $con->prepare('select ProductTypeId, ProductTypeName from product
 $productType->execute();
 $productTypeRecord = $productType->fetchAll(PDO::FETCH_OBJ);
 
-// Agent Id
-$agent = $con->prepare('select AgentId, AgentEmail from agent');
-$agent->execute();
-$agentRecord = $agent->fetchAll(PDO::FETCH_OBJ);
-
 // Delivery Service Id
 $deliveryService  = $con->prepare('select DeliveryServiceId, DeliveryServiceName from deliveryservice');
 $deliveryService->execute();
 $deliveryServiceRecord = $deliveryService->fetchAll(PDO::FETCH_OBJ);
 
 // Franchise Id
-$franchise = $con->prepare('select FranchiseId, FranchiseName, FranchiseCity from franchise');
+$franchise  = $con->prepare('select FranchiseName, FranchiseId from franchise where FranchiseId = ?');
+$franchise->bindParam(1, $_SESSION['agent-franchise-id']);
 $franchise->execute();
 $franchiseRecord = $franchise->fetchAll(PDO::FETCH_OBJ);
+
 ?>
 
 <!-- Main Content Starts Here -->
@@ -131,13 +129,12 @@ $franchiseRecord = $franchise->fetchAll(PDO::FETCH_OBJ);
     </section>
     <!-- New Section Ends Here -->
 
-
     <!-- Reports Section Starts Here -->
     <section class="report">
         <div class="row m-5 mt-0">
             <div class="col-12">
                 <!-- Download Repor Form -->
-                <form method="POST" action="../assets/modules/download-report.php">
+                <form method="POST" action="../assets/modules/agent-download-report-by-date.php">
                     <div class="row mt-4">
                         <div class="col-4">
                             <!-- Select -->
@@ -152,13 +149,11 @@ $franchiseRecord = $franchise->fetchAll(PDO::FETCH_OBJ);
                         </div>
                         <div class="col-4">
                             <!-- Select -->
-                            <h4 class="text text-center">Select City</h4>
-                            <select name="download-report-city-wise" id="ReportCityWise" class="form-select" required>
-                                <option value="1">All</option>
-                                <?php foreach ($franchiseRecord as $franchise) { ?>
-                                    <option value="<?php echo $franchise->FranchiseCity ?>">
-                                    <?php echo $franchise->FranchiseCity;
-                                } ?></option>
+                            <h4 class="text text-center">Select Franchise</h4>
+                            <select disabled name="download-report-city-wise" id="ReportCityWise" class="form-select" required>
+                                <option selected value="<?php echo $_SESSION['agent-franchise-id'] ?>"><?php foreach ($franchiseRecord as $franchise) {
+                                                                                                            echo $franchise->FranchiseName;
+                                                                                                        } ?></option>
                             </select>
                         </div>
                         <div class="col-4">
@@ -234,11 +229,8 @@ $franchiseRecord = $franchise->fetchAll(PDO::FETCH_OBJ);
                                 } ?>
                             </td>
                             <td class="text">
-                                <?php foreach ($agentRecord as $agent) {
-                                    if ($row->PackageAgentId == $agent->AgentId) {
-                                        echo $agent->AgentEmail;
-                                    }
-                                } ?>
+                                <?php echo $_SESSION['agent-email'];
+                                ?>
                             </td>
                             <td class="text">
                                 <?php foreach ($franchiseRecord as $franchise) {
@@ -279,5 +271,5 @@ $franchiseRecord = $franchise->fetchAll(PDO::FETCH_OBJ);
 <!-- Main Content Ends Here -->
 
 <?php
-include('../assets/template/admin/footer.php');
+include('../assets/template/agent/footer.php');
 ?>
