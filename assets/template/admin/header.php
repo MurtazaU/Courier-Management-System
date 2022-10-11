@@ -113,9 +113,9 @@ if (!isset($_SESSION['admin-email'])) {
                     </li>
 
                     <li class="nav-link">
-                        <a href="./franchise.php">
-                            <i class="fa-solid fa-building icon"></i>
-                            <span class="text nav-text">Manage Additives</span>
+                        <a href="./additives.php">
+                            <i class="fa-solid fa-plus icon"></i>
+                            <span class="text nav-text">More</span>
                         </a>
                     </li>
 
