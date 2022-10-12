@@ -2,10 +2,14 @@
 // Header
 include('./assets/template/user/header.php');
 
-// Button
+// Tracking Number
 if (isset($_POST['submit-tracking-number'])) {
     $_SESSION['tracking-number'] = "CR-" . $_POST['tracking-number'];
     header("location: ./order-status.php");
+}
+// Email
+if (!isset($_SESSION['useremail'])) {
+    header("location: ./index.php");
 }
 ?>
 
@@ -39,8 +43,8 @@ if (isset($_POST['submit-tracking-number'])) {
                             <div class="col-xl-6 col-sm-12">
                                 <!-- Tracking Number -->
                                 <div class="row">
-                                    <div class="col-2 text-end mt-3">CR - </div>
-                                    <div class="col-10"><input type="number" class="form-control mt-2" placeholder="Enter Tracking Number" aria-label="Recipient's username" aria-describedby="basic-addon2" name="tracking-number" required min="10000" max="99999"> </div>
+                                    <div class="col-xl-2 col-sm-12 text-xl-end mt-3">CR - </div>
+                                    <div class="col-xl-10 col-sm-12"><input type="number" class="form-control mt-2" placeholder="Enter Tracking Number" aria-label="Recipient's username" aria-describedby="basic-addon2" name="tracking-number" required min="10000" max="99999"> </div>
                                 </div>
 
                             </div>
