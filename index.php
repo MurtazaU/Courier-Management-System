@@ -26,7 +26,7 @@ if (isset($_POST['submit-tracking-number'])) {
             <h3 class="hero-sub-heading"> <a class="hero-sub-heading-letter">B</a>uilding Stronger Connections with</h1>
               <h1 class="hero-heading">Innovative Global Solutions.</h1>
               <p class="hero-para">
-                M&P helps you deliver on your commitments by <br> ensuring we fulfill ours.
+                GO helps you deliver on your commitments by <br> ensuring we fulfill ours.
               </p>
               <!-- Button -->
               <div class="input-group mb-3">
@@ -111,7 +111,7 @@ if (isset($_POST['submit-tracking-number'])) {
           </div>
           <div class="col-6 text-start">
             <p class="info-box-heading">Email Now!</p>
-            <p class="info-box-sub-heading">contact@mulphilog.com</p>
+            <p class="info-box-sub-heading">contact@go.com</p>
           </div>
         </div>
       </div>

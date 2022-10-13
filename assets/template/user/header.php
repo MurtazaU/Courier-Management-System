@@ -43,13 +43,10 @@ session_start();
       <!-- Top Navbar -->
       <div>
         <div class="info-container">
-          <i class="fa-sharp fa-solid fa-phone info"></i>
-          <i class="fa-brands fa-whatsapp info"></i>
+          <i class="fa-sharp fa-solid fa-phone info"></i>: (021) 111-202-202
         </div>
         <ul class="info-list-container">
-          <li class="info-list"><a target="_blank" href="https://www.facebook.com" class="info-item"><i class="fa-brands fa-facebook"></i></a></li>
-          <li class="info-list"><a target="_blank" href="https://www.instagram.com" class="info-item"><i class="fa-brands fa-instagram"></i></a></li>
-          <li class="info-list"><a target="_blank" href="https://www.twitter.com" class="info-item"><i class="fa-brands fa-twitter"></i></a></li>
+          <i class="fa-brands fa-whatsapp info mt-1"></i>: +92 335-22212312
         </ul>
       </div>
     </div>

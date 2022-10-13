@@ -42,7 +42,7 @@ nav {
 }
 
 .logo {
-  height: 10vh;
+  height: 25vh;
   transition: 0.5s;
   margin-left: 7vw;
 }
@@ -79,7 +79,7 @@ nav {
 
 /* Scrolled Logo Styling */
 .scrolled .logo {
-  height: 7vh;
+  height: 15vh;
   margin-left: 7vw;
 }
 

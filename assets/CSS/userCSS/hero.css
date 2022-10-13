@@ -103,8 +103,8 @@ main {
   height: 50vh;
   border: 2px solid rgba(100, 100, 100, 0.3);
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 20;
+  left: 10;
   right: 10%;
   bottom: 0;
   margin: auto;
