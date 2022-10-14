@@ -12,6 +12,8 @@ if (isset($_POST['submit-tracking-number'])) {
 
 <!-- Home Css Link -->
 <link rel="stylesheet" href="./assets/CSS/userCss/hero.css">
+<!-- About Section Css Link -->
+<link rel="stylesheet" href="./assets/CSS/userCss/about-section.css">
 
 <!-- Links to External Resources Ends Here -->
 
@@ -184,6 +186,40 @@ if (isset($_POST['submit-tracking-number'])) {
   </div>
 </section>
 <!-- Qualities Section Ends Here -->
+
+<!-- ======= About Us Single ======= -->
+<section class="intro-single" style="margin-top: 9%">
+  <div class="row">
+    <div class="center_1">
+      <h1 data-text="ABOUT_Us ">ABOUT_Us</h1>
+    </div>
+  </div>
+</section>
+<!-- About Us Single-->
+
+<!-- ======= about Section start======= -->
+<section class="section-about">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-6 col-sm-12">
+        <img src="./assets/img/userimg/about-section-img.jpg" alt="Section-img" class="img-fluid">
+      </div>
+      <div class="col-xl-6 col-sm-12">
+        <div class="content-1">
+          <h1>
+            GO: Courier Management System
+          </h1>
+        </div>
+        <p class="color-text-a" style="text-align: justify; ">
+          <em> Courier Service </em> one of the well-known courier services is Venus Courier, based in Karachi, Pakistan.They provide a variety of services through a vast network that spans many cities.We pledge to provide quick, dependable & punctual delivery of your consignments.We specialise in providing prompt, affordable & trustworthy parcel delivery together with responsive customer service.
+          <br>
+          world-wide, integrated road networks. We are able to monitor and constantly respond to circumstances like bad weather, additional pick-ups or drops, or high traffic thanks to our global network of control towers and cutting-edge technology, ensuring that your goods are always travelling the most effective route.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- about section end -->
 
 
 

@@ -37,7 +37,7 @@ session_start();
 <body>
 
   <!-- Top Bar Starts Here -->
-  <div class="bar">
+  <div class="bar ">
 
     <div class="top-bar">
       <!-- Top Navbar -->
@@ -46,7 +46,7 @@ session_start();
           <i class="fa-sharp fa-solid fa-phone info"></i>: (021) 111-202-202
         </div>
         <ul class="info-list-container">
-          <i class="fa-brands fa-whatsapp info mt-1"></i>: +92 335-22212312
+          <i class="fa-brands fa-whatsapp info right-info mt-1"></i>: +92 335-22212312
         </ul>
       </div>
     </div>
@@ -55,7 +55,7 @@ session_start();
   <!-- Navbar Starts Here -->
   <nav class="navbar navbar-expand-lg ">
     <div class="container-fluid ">
-      <a class="navbar-brand " href="/">
+      <a class="navbar-brand " href="./index.php">
         <img src="./assets/img/web-logo.png" class="logo" alt="logo">
       </a>
       <button class="navbar-toggler  " type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">

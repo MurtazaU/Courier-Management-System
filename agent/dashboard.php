@@ -169,7 +169,7 @@ $franchiseRecord = $franchise->fetchAll(PDO::FETCH_OBJ);
                     ?>
                 </tbody>
             </table>
-            <a href="./courier.php">
+            <a href="./manage-courier.php">
                 <button class="btn l-bg-cherry mt-3 w-100">View, Edit, And Create New Couriers</button>
             </a>
         </div>

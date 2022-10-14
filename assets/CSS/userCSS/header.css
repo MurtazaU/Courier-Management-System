@@ -94,9 +94,10 @@ nav {
 @media (max-width: 960px) {
   nav {
     position: fixed;
+    margin-top: -35px;
   }
   .logo {
-    height: 5vh;
+    height: 20vh;
     margin-left: 0px;
   }
 
@@ -130,11 +131,13 @@ nav {
     font-size: medium;
     padding: 0px 0px;
   }
-
+  /* TOP BAR */
+  .bar{
+    display: none;
+  }
   /* Footer Responsive Stylings */
   .footer-container{
   margin-top: 35vh;
-
   }
 }
 

@@ -71,13 +71,6 @@ if (!isset($_SESSION['admin-email'])) {
                     </li>
 
                     <li class="nav-link">
-                        <a href="./new-courier.php">
-                            <i class="fa-solid fa-box icon"></i>
-                            <span class="text nav-text">Create New Courier</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-link">
                         <a href="./courier-status.php">
                             <i class="fa-solid fa-cube icon"></i>
                             <span class="text nav-text">Manage Courier Status</span>
